@@ -12,6 +12,8 @@ enum ActionType // The actions supported (add more as needed)
 	ADD_LADDER,		// Add Ladder Action
 	ADD_SNAKE,		// Add Snake Action	
 	ADD_CARD,		// Add Card Action	
+	ADD_KILLER ,
+	ADD_OBSTACLE ,
 	EXIT,			// Exit Application
 	TO_PLAY_MODE,	// Go to Play Mode
 
