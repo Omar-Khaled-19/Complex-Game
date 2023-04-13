@@ -101,7 +101,7 @@ int Output::GetCellStartX(const CellPosition & cellPos) const
 {
 	///TODO: implement the following function as described in Output.h file
 
-	return 0; // this line should be changed with your implementation
+	return cellPos.HCell(); // this line should be changed with your implementation
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -110,7 +110,7 @@ int Output::GetCellStartY(const CellPosition & cellPos) const
 {
 	///TODO: implement the following function as described in Output.h file
 
-	return 0; // this line should be changed with your implementation
+	return cellPos.VCell(); // this line should be changed with your implementation
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -130,7 +130,7 @@ void Output::DrawCardNumber(const CellPosition & cellPos, int cardNum) const
 
 	///TODO: Calculate the Width & Height of the integer "cardNum" if written using the Current Font
 	//       (Use GetIntegerSize() window function) and set the "w" and "h" variables with its width and height
-
+	pWind->GetIntegerSize( w,h,cardNum);
 
 
 	// Calculate where to write the integer of the cardNum
@@ -141,7 +141,7 @@ void Output::DrawCardNumber(const CellPosition & cellPos, int cardNum) const
 
 	///TODO: Draw the Integer the representing the "cardNum" in the location (x,y)
 	
-
+	pWind->DrawInteger(x, y, cardNum);
 
 }
 
@@ -202,6 +202,8 @@ void Output::CreateDesignModeToolBar() const
 	MenuItemImages[ITM_ADD_LADDER] = "images\\Menu_Ladder.jpg";	
 	MenuItemImages[ITM_ADD_SNAKE] = "images\\Menu_Snake.jpg";	
 	MenuItemImages[ITM_ADD_CARD] = "images\\Menu_Card.jpg";	
+	MenuItemImages[ITM_ADD_KILLER] = "images\\Menu_Killer.jpg";
+	MenuItemImages[ITM_ADD_OBSTACLE] = "images\\Menu_Obsatcle.jpg"; 
 	MenuItemImages[ITM_EXIT] = "images\\Menu_Exit.jpg";
 	MenuItemImages[ITM_SWITCH_TO_PLAY_MODE] = "images\\Menu_SwitchToGame.jpg";
 
