@@ -207,6 +207,7 @@ void Output::CreateDesignModeToolBar() const
 	MenuItemImages[ITM_SWITCH_TO_PLAY_MODE] = "images\\Menu_SwitchToGame.jpg";
 
 	///TODO: Prepare images for each menu item and add it to the list hhh
+	//fgh
 
 
 
