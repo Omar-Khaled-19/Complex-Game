@@ -201,10 +201,10 @@ void Output::CreateDesignModeToolBar() const
 	MenuItemImages[ITM_ADD_LADDER] = "images\\Menu_Ladder.jpg";	
 	MenuItemImages[ITM_ADD_SNAKE] = "images\\Menu_Snake.jpg";	
 	MenuItemImages[ITM_ADD_CARD] = "images\\Menu_Card.jpg";	
-	/*MenuItemImages[ITM_ADD_KILLER] = "images\\Menu_Killer.jpg";
-	MenuItemImages[ITM_ADD_OBSTACLE] = "images\\Menu_Obsatcle.jpg"; 
+	MenuItemImages[ITM_ADD_KILLER] = "images\\Menu_Killer.jpg";
+	MenuItemImages[ITM_ADD_OBSTACLE] = "images\\obstacle.jpg"; 
 	MenuItemImages[ITM_EXIT] = "images\\Menu_Exit.jpg";
-	MenuItemImages[ITM_SWITCH_TO_PLAY_MODE] = "images\\Menu_SwitchToGame.jpg";*/
+	MenuItemImages[ITM_SWITCH_TO_PLAY_MODE] = "images\\Menu_SwitchToGame.jpg";
 
 	///TODO: Prepare images for each menu item and add it to the list hhh
 	//fgh
