@@ -85,7 +85,7 @@ ActionType Input::GetUserAction() const
 			case ITM_ADD_SNAKE: return ADD_SNAKE;
 			case ITM_ADD_CARD: return ADD_CARD;
 			case ITM_EXIT: return EXIT;
-			case ITM_SWITCH_TO_PLAY_MODE: return TO_PLAY_MODE;			
+			case ITM_SWITCH_TO_PLAY_MODE: return SWITCH_TO_PLAY_MODE;
 
 				///TODO: Add cases for the other items of Design Mode
 

@@ -31,7 +31,7 @@ enum DESIGN_MODE_ITEMS // The items of the Design Mode (you should add more item
 	ITM_DELETE_GAME_OBJECT,
 	ITM_SAVE_GRID,
 	ITM_OPEN_GRID,
-	ITM_TO_PLAY_MODE,
+	ITM_SWITCH_TO_PLAY_MODE,
 	ITM_EXIT,
 	
 	///TODO: Add more items names here
