@@ -365,7 +365,6 @@ void Output::DrawPlayer(const CellPosition& cellPos, int playerNum, color player
 	if (playerNum < 0 || playerNum > 3)
 		return;
 
-	//// ???
 
 	// Get the X & Y coordinates of the start point of the cell (its upper left corner)
 	int cellStartX = GetCellStartX(cellPos);
@@ -407,7 +406,7 @@ void Output::DrawLadder(const CellPosition& fromCell, const CellPosition& toCell
 
 	///TODO: Validate the Cell Position (Must be Vertical Cells AND toCell above fromCell, otherwise, Do NOT draw)
 
-	if (fromCell.HCell() != toCell.HCell() || fromCell.VCell() <= toCell.VCell())
+	if (GetCellStartX(fromCell) != GetCellStartX(toCell) || GetCellStartY(fromCell) <= GetCellStartY(toCell))
 		return;
 
 
@@ -465,7 +464,7 @@ void Output::DrawSnake(const CellPosition& fromCell, const CellPosition& toCell)
 
 	///TODO: Validate the fromCell and toCell (Must be Vertical and toCell is below fromCell otherwise do NOT draw)
 
-	if (fromCell.HCell() != toCell.HCell() || fromCell.VCell() >= toCell.VCell())
+	if (GetCellStartX(fromCell) != GetCellStartX(toCell) || GetCellStartY(fromCell) >= GetCellStartY(toCell))
 		return;
 
 	// Get the upper left corner coordinates of the fromCell and toCell
