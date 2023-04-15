@@ -48,12 +48,14 @@ int Input::GetInteger(Output *pO) const
 	///TODO: implement the GetInteger function as described in Input.h file 
 	//       using function GetString() defined above and function stoi()
 	
+	string x = GetSrting(pO);
 
+	int z = stoi(x);
 
 
 	// Note: stoi(s) converts string s into its equivalent integer (for example, "55" is converted to 55)
 
-	return 0; // this line should be changed with your implementation
+	return z; // this line should be changed with your implementation
 }
 
 //======================================================================================//
