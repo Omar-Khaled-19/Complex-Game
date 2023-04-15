@@ -49,6 +49,8 @@ int main()
 	///TODO: Call Function DrawCell of Class Ouput Multiple Times
 	///       to draw cells in cell locations of: card_1, card_2, ..., card_10 declared above
 	///       with cardNum 1, 2, 3, 4 and 10 respectively
+	/// 
+	pOut->DrawCell(card_1, 1);
 
 
 

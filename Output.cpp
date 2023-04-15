@@ -362,7 +362,7 @@ void Output::DrawPlayer(const CellPosition& cellPos, int playerNum, color player
 
 	///TODO: Validate the playerNum, if not valid return
 
-	if (playerNum <= 1 || playerNum >= 4)
+	if (playerNum < 1 || playerNum > 4)
 		return;
 
 	//// ???
