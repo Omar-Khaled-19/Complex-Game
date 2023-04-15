@@ -165,7 +165,8 @@ CellPosition Input::GetCellClicked() const
 		{
 			///TODO: SetHCell and SetVCell of the object cellPost appropriately
 			//       using the coordinates x, y and the appropriate variables of the UI_Info Object (UI)
-			
+			cellPos.SetHCell(x);
+			cellPos.SetVCell(y);
 
 
 		}
