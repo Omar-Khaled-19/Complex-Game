@@ -50,7 +50,12 @@ int main()
 	///       to draw cells in cell locations of: card_1, card_2, ..., card_10 declared above
 	///       with cardNum 1, 2, 3, 4 and 10 respectively
 	/// 
-	
+	pOut->DrawCell(card_1, 1);
+	pOut->DrawCell(card_2, 2);
+	pOut->DrawCell(card_3, 3);
+	pOut->DrawCell(card_4, 4);
+	pOut->DrawCell(card_10, 10);
+
 
 
 
@@ -78,6 +83,20 @@ int main()
 	///       playerNum (5) with color (PlayerColors[1] defined in UI object) in cell position (player_99 declared above) --> Invalid
 	///       playerNum (-1) with color (PlayerColors[1] defined in UI object) in cell position (player_99 declared above) --> Invalid
 	
+	pOut->DrawPlayer(player_1, 0, UI.PlayerColors[0]);
+	pOut->DrawPlayer(player_1, 1, UI.PlayerColors[1]);
+	pOut->DrawPlayer(player_1, 2, UI.PlayerColors[2]);
+	pOut->DrawPlayer(player_1, 3, UI.PlayerColors[3]);
+	pOut->DrawPlayer(player_15, 0, UI.PlayerColors[0]);
+	pOut->DrawPlayer(player_99, 1, UI.PlayerColors[1]);
+	pOut->DrawPlayer(player_99, 5, UI.PlayerColors[1]);
+	pOut->DrawPlayer(player_99, -1, UI.PlayerColors[1]);
+
+
+
+
+
+
 
 	pOut->PrintMessage("FINISHED - Drawing (Players) Test,  Click to continue");
 	pIn->GetPointClicked(x,y);	//Wait for any click
@@ -100,6 +119,12 @@ int main()
 	///       a ladder from start_89 to end_99 declared above --> INVALID because NOT vertical
 	///       a ladder from end_34 to start_89 declared above --> valid
 	
+	pOut->DrawLadder(start_89, end_34);
+	pOut->DrawLadder(start_22, end_99);
+	pOut->DrawLadder(start_89, end_99);
+	pOut->DrawLadder(end_34, start_89);
+	
+
 
 
 	pOut->PrintMessage("FINISHED - Drawing (Ladders) Test,  Click to continue");
@@ -123,6 +148,12 @@ int main()
 	///       a snake from start_98 to end_2 declared above (invalid)
 	///       a snake from end_2 to start_24 declared above (invalid)
 	
+
+	pOut->DrawSnake(start_24, end_2);
+	pOut->DrawSnake(start_98, end_32);
+	pOut->DrawSnake(start_98, end_2);
+	pOut->DrawSnake(end_2 , start_24);
+
 
 
 	pOut->PrintMessage("FINISHED - Drawing (Snakes) Test,  Click to continue");

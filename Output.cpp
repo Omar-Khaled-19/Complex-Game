@@ -100,7 +100,7 @@ int Output::GetCellStartX(const CellPosition & cellPos) const
 {
 	///TODO: implement the following function as described in Output.h file
 
-	return cellPos.HCell(); // this line should be changed with your implementation
+	return cellPos.HCell()*UI.CellWidth; // this line should be changed with your implementation
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -109,7 +109,7 @@ int Output::GetCellStartY(const CellPosition & cellPos) const
 {
 	///TODO: implement the following function as described in Output.h file
 
-	return cellPos.VCell(); // this line should be changed with your implementation
+	return cellPos.VCell()*UI.CellHeight+UI.ToolBarHeight; // this line should be changed with your implementation
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -323,7 +323,7 @@ void Output::DrawCell(const CellPosition& cellPos, int cardNum) const
 
 	///TODO: Draw the Cell Rectangle using the appropriate coordinates
 
-	pWind->DrawRectangle(cellStartX, cellStartY, cellStartX + 1, cellStartY + 1);
+	pWind->DrawRectangle(cellStartX, cellStartY, cellStartX + UI.CellWidth, cellStartY + UI.CellHeight);
 
 
 	// ----- 2- Draw the CELL number (the small number at the bottom right of the cell) -----
@@ -337,7 +337,7 @@ void Output::DrawCell(const CellPosition& cellPos, int cardNum) const
 	pWind->GetIntegerSize(w, h, cellNum);
 
 	//       (Use GetIntegerSize() window function) and set the "w" and "h" variables with its width and height
-
+	
 
 
 	// Calculate X & Y coordinate of the start point of writing the card number (upper left point of the cell num)
@@ -364,39 +364,41 @@ void Output::DrawPlayer(const CellPosition& cellPos, int playerNum, color player
 
 	if (playerNum < 0 || playerNum > 3)
 		return;
+	
+
+	
+		// Get the X & Y coordinates of the start point of the cell (its upper left corner)
+		int cellStartX = GetCellStartX(cellPos);
+		int cellStartY = GetCellStartY(cellPos);
+
+		// Calculate the Radius of the Player's Circle
+		int radius = UI.CellWidth / 14; // proportional to cell width
+
+		// Calculate the horizontal space before drawing players circles (space from the left border of the cell)
+		int ySpace = UI.CellHeight / 6; // proportional to cell height
+
+		// Note: Players' Circles Locations depending on "playerNum" is as follows:
+		// Player_0   Player_1
+		// Player_2   Player_3
+
+		// Calculate the Y coordinate of the center of the player's circle (based on playerNum)
+		int y = cellStartY + ySpace + radius + 2;
+		if (playerNum == 2 || playerNum == 3)
+			y += radius + 2 + radius; // because playerNum 2 and 3 are drawn in the second row of circles
+
+		// Calculate the Y coordinate of the center of the player's circle (based on playerNum)
+		int x = cellStartX + UI.LadderXOffset + radius + 4; // UI.LadderXOffset is used to draw players' circles 
+		// AFTER the ladder start vertical line (assuming there is a ladder)
+		// for not overlapping with ladders
+		if (playerNum == 1 || playerNum == 3)
+			x += radius + 2 + radius; // because playerNum 1 and 3 are drawn in the second column of circles
 
 
-	// Get the X & Y coordinates of the start point of the cell (its upper left corner)
-	int cellStartX = GetCellStartX(cellPos);
-	int cellStartY = GetCellStartY(cellPos);
-
-	// Calculate the Radius of the Player's Circle
-	int radius = UI.CellWidth / 14; // proportional to cell width
-
-	// Calculate the horizontal space before drawing players circles (space from the left border of the cell)
-	int ySpace = UI.CellHeight / 6; // proportional to cell height
-
-	// Note: Players' Circles Locations depending on "playerNum" is as follows:
-	// Player_0   Player_1
-	// Player_2   Player_3
-
-	// Calculate the Y coordinate of the center of the player's circle (based on playerNum)
-	int y = cellStartY + ySpace + radius + 2;
-	if (playerNum == 2 || playerNum == 3)
-		y += radius + 2 + radius; // because playerNum 2 and 3 are drawn in the second row of circles
-
-	// Calculate the Y coordinate of the center of the player's circle (based on playerNum)
-	int x = cellStartX + UI.LadderXOffset + radius + 4; // UI.LadderXOffset is used to draw players' circles 
-	// AFTER the ladder start vertical line (assuming there is a ladder)
-	// for not overlapping with ladders
-	if (playerNum == 1 || playerNum == 3)
-		x += radius + 2 + radius; // because playerNum 1 and 3 are drawn in the second column of circles
-
-
-	///TODO: Draw the player circle in center(x,y) and filled with the playerColor passed to the function
-
-	pWind->DrawCircle(x, y, radius);
-
+		///TODO: Draw the player circle in center(x,y) and filled with the playerColor passed to the function
+		pWind->SetBrush(playerColor);
+		pWind->DrawCircle(x, y, radius);
+		
+	
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -452,8 +454,8 @@ void Output::DrawLadder(const CellPosition& fromCell, const CellPosition& toCell
 
 	while (fromStartY > toStartY)
 	{
-		pWind->DrawLine(cellStartX, fromStartY, cellStartX + UI.CellWidth, fromStartY);
-		fromStartY += UI.CellHeight;
+		pWind->DrawLine(x12, fromStartY, x34, fromStartY);
+		fromStartY -= UI.CellHeight;
 	}
 }
 
@@ -499,13 +501,13 @@ void Output::DrawSnake(const CellPosition& fromCell, const CellPosition& toCell)
 	///TODO: Set the coordinates of the 4 points of the Polygon
 
 	int x1diamond = x12;
-	int y1diamond = y2;
+	int y1diamond = y1;
 	int x2diamond = x12 + xChange;
-	int y2diamond = y2 + yChange;
+	int y2diamond = y1 - yChange;
 	int x3diamond = x12 - xChange;
-	int y3diamond = y2 + yChange;
+	int y3diamond = y1 - yChange;
 	int x4diamond = x12;
-	int y4diamond = y2 + (2 * yChange);
+	int y4diamond = y1 - (2 * yChange);
 
 	//       Check the snakes drawn in the project document and draw it the same way
 
@@ -513,8 +515,8 @@ void Output::DrawSnake(const CellPosition& fromCell, const CellPosition& toCell)
 
 
 	///TODO: Draw the Polygon (diamond) representing the Snake's Head
-	int diamondXs[4] = { x1diamond , x2diamond , x3diamond , x4diamond };
-	int diamondYs[4] = { y1diamond , y2diamond , y3diamond , y4diamond };
+	int diamondXs[4] = { x1diamond , x2diamond , x4diamond , x3diamond };
+	int diamondYs[4] = { y1diamond , y2diamond , y4diamond , y3diamond };
 	pWind->DrawPolygon(diamondXs, diamondYs, 4);
 	//       Check the snakes drawn in the project document and draw it the same way
 
