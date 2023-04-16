@@ -197,7 +197,13 @@ int main()
 	// 1- Call function GetCellClicked
 	// 2- Print on the status bar the vCell and hCell of the clicked cell
 	// 3- Repeat Step 1 and 2 five times
-
+	CellPosition c;
+	for (int i = 0; i < 5; i++)
+	{
+		c = pIn->GetCellClicked();
+		pOut->PrintMessage("Vcell = " + to_string(c.VCell()) + "      " + "Hcell = " + to_string(c.HCell()));
+		pIn->GetPointClicked(x, y);
+	}
 
 	pOut->PrintMessage("FINISHED - (GetCellClicked) Test, Click to continue");
 	pIn->GetPointClicked(x,y);	//Wait for any click
@@ -215,6 +221,9 @@ int main()
 	// 3- print on the status bar "You Entered" then print the string
 	// NOTE: GetString() is already implemented. It is just required from you to call it
 
+	pOut->PrintMessage("Please Enter a String : ");
+	pOut->PrintMessage("You Entered: " + pIn->GetSrting(pOut));
+	pIn->GetPointClicked(x, y);
 
 
 	pOut->PrintMessage("FINISHED - (GetSrting) Test, Click to continue");
