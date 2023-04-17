@@ -288,7 +288,7 @@ int main()
 	ActionType ActType;
 
 	///TODO:  
-	//You must add a case for EACH action (both Create-Grid mode and Game mode actions)
+	//You must add a case for EACH action (both Create-Grid mode and Game mode actions)   WAITING
 	//Add cases for the missing actions below
 	do
 	{
@@ -308,8 +308,33 @@ int main()
 			pOut->PrintMessage("Action: ADD_CARD , Click anywhere");
 			break;
 
-		case EXIT:				
+		case COPY_CARD:
+			pOut->PrintMessage("Action: COPY_CARD , Click anywhere");
 			break;
+
+		case CUT_CARD:
+			pOut->PrintMessage("Action: CUT_CARD , Click anywhere");
+			break;
+
+		case PASTE_CARD:
+			pOut->PrintMessage("Action: PASTE_CARD , Click anywhere");
+			break;
+
+		case DELETE_GAME_OBJECT:
+			pOut->PrintMessage("Action: DELETE_GAME_OBJECT , Click anywhere");
+			break;
+
+		case SAVE_GRID:
+			pOut->PrintMessage("Action: SAVE_GRID , Click anywhere");
+			break;
+
+		case OPEN_GRID:
+			pOut->PrintMessage("Action: OPEN_GRID , Click anywhere");
+			break;
+
+
+		case EXIT:				
+			break;                        
 
 		case TO_PLAY_MODE:
 
@@ -318,6 +343,8 @@ int main()
 
 			///TODO:  Call Function (PrintPlayersInfo) of Class Output with a string similar to 
 			//        the one given in the screenshot of project document 
+			
+			pOut->PrintPlayersInfo("p0( , )");
 
 			break;
 
@@ -328,6 +355,15 @@ int main()
 		case ROLL_DICE:
 			pOut->PrintMessage("Action: ROLL_DICE , Click anywhere");
 			break;
+
+		case INPUT_DICE_VALUE:
+			pOut->PrintMessage("Action: INPUT_DICE_VALUE , Click anywhere");
+			break;
+
+		case NEW_GAME:
+			pOut->PrintMessage("Action: NEW_GAME , Click anywhere");
+			break;
+			
 
 		case TO_DESIGN_MODE:
 			pOut->PrintMessage("Action: TO_DESIGN_MODE , Click anywhere");
