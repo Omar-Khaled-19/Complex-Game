@@ -202,8 +202,8 @@ int main()
 	{
 		c = pIn->GetCellClicked();
 		pOut->PrintMessage("Vcell = " + to_string(c.VCell()) + "      " + "Hcell = " + to_string(c.HCell()));
-		pIn->GetPointClicked(x, y);
 	}
+	pIn->GetPointClicked(x, y);
 
 	pOut->PrintMessage("FINISHED - (GetCellClicked) Test, Click to continue");
 	pIn->GetPointClicked(x,y);	//Wait for any click
@@ -250,6 +250,40 @@ int main()
 	// 5- Repeat the above steps FIVE TIMES
 	// 6- Repeat all the above steps to test SetHCell() function instead with the needed modifications
 
+	
+	for (int i = 0; i < 5; i++)
+	{
+		pOut->PrintMessage("Please Enter an integer: ");
+		bool b = cellpos_1.SetVCell(pIn->GetInteger(pOut));
+		if (b)
+		{
+			pOut->PrintMessage("Now the Vcell = " + to_string(cellpos_1.VCell()));
+			pIn->GetPointClicked(x, y);
+		}
+		else
+		{
+			pOut->PrintMessage("Invalid Number Please Re-Enter");
+			pIn->GetPointClicked(x, y);
+		}
+	}
+	
+	for (int i = 0; i < 5; i++)
+	{
+		pOut->PrintMessage("Please Enter an integer: ");
+		bool b = cellpos_1.SetHCell(pIn->GetInteger(pOut));
+		if (b)
+		{
+			pOut->PrintMessage("Now the Hcell = " + to_string(cellpos_1.HCell()));
+			pIn->GetPointClicked(x, y);
+		}
+		else
+		{
+			pOut->PrintMessage("Invalid Number Please Re-Enter");
+			pIn->GetPointClicked(x, y);
+		}
+	}
+	
+
 	pOut->PrintMessage("FINISHED - (Setters with Validation) Test, Click to continue");
 	pIn->GetPointClicked(x,y);	//Wait for any click
 
@@ -263,6 +297,24 @@ int main()
 	// 4- Print the Cell Number on the status bar
 	// 5- Repeat the above steps Five TIMES
 
+	for (int i = 0; i < 5; i++)
+	{
+		pOut->PrintMessage("Please Enter the vCell and the hCell");
+		int v = pIn->GetInteger(pOut);
+		int h = pIn->GetInteger(pOut);
+		CellPosition c1;
+		if (c1.SetHCell(h) && c1.SetVCell(v))
+		{
+			pOut->PrintMessage("Cell Number: " + to_string(c1.GetCellNum()));
+			pIn->GetPointClicked(x, y);
+		}
+		else
+		{
+			pOut->PrintMessage("Invalid Numbers Please Re-Enter");
+			pIn->GetPointClicked(x, y);
+		}
+	}
+
 	pOut->PrintMessage("FINISHED - (GetCellNumFromPosition) Test, Click to continue");
 	pIn->GetPointClicked(x,y);	//Wait for any click
 
@@ -275,6 +327,23 @@ int main()
 	//   --> it uses the function : GetCellPositionFromNum () inside it
 	// 4- Print the Cell vCell and hCell on the status bar
 	// 5- Repeat the above steps Five TIMES
+
+	for (int i = 0; i < 5; i++)
+	{
+		pOut->PrintMessage("Please Enter a number: ");
+		int n = pIn->GetInteger(pOut);
+		if (n > 0 && n < 100)
+		{
+			CellPosition c2(n);
+			pOut->PrintMessage("Vcell = " + to_string(c2.VCell()) + "       " + "Hcell = " + to_string(c2.HCell()));
+			pIn->GetPointClicked(x, y);
+		}
+		else
+		{
+			pOut->PrintMessage("Invalid Number Please Re-Enter");
+			pIn->GetPointClicked(x, y);
+		}
+	}
 
 	pOut->PrintMessage("FINISHED - (GetCellPositionFromNum) Test, Click to continue");
 	pIn->GetPointClicked(x,y);	//Wait for any click
