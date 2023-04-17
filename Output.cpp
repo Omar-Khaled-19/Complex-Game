@@ -238,7 +238,7 @@ void Output::CreatePlayModeToolBar() const
 	// ** MAKE SURE THAT THE IMAGES ARE .JPG FILES **
 	string MenuItemImages[PLAY_ITM_COUNT];
 	MenuItemImages[ITM_ROLL_DICE] = "images\\Menu_Dice.jpg";
-	MenuItemImages[ITM_ENTER_DICE_VALUE] = "images\\manual_dice.jpg";
+	MenuItemImages[ITM_ENTER_DICE_VALUE] = "images\\manual_dice.jpeg";
 	MenuItemImages[ITM_NEW_GAME] = "images\\new_game.jpg";
 	MenuItemImages[ITM_SWITCH_TO_DESIGN_MODE] = "images\\Menu_SwitchToGrid.jpg";
 

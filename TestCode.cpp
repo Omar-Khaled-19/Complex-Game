@@ -398,23 +398,26 @@ int main()
 			break;
 
 		case OPEN_GRID:
+			pOut->ClearGridArea();
 			pOut->PrintMessage("Action: OPEN_GRID , Click anywhere");
 			break;
 
 
-		case EXIT:				
-			break;                        
 
 		case TO_PLAY_MODE:
 
 			pOut->PrintMessage("Action: TO_PLAY_MODE , Click anywhere");
-			pOut->CreatePlayModeToolBar();
+			pOut->CreatePlayModeToolBar(); 
+
 
 			///TODO:  Call Function (PrintPlayersInfo) of Class Output with a string similar to 
 			//        the one given in the screenshot of project document 
+			pOut->PrintPlayersInfo("p0 (100,0) , p1 (100,0) , p2 (100,0) , p3(100,0) | Curr = 0");
 			
-			pOut->PrintPlayersInfo("p0( , )");
 
+			break;
+
+		case EXIT:
 			break;
 
 
@@ -432,7 +435,7 @@ int main()
 		case NEW_GAME:
 			pOut->PrintMessage("Action: NEW_GAME , Click anywhere");
 			break;
-			
+
 
 		case TO_DESIGN_MODE:
 			pOut->PrintMessage("Action: TO_DESIGN_MODE , Click anywhere");
