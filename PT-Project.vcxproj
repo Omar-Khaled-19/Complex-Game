@@ -134,6 +134,10 @@
     <ClCompile Include="ApplicationManager.cpp" />
     <ClCompile Include="Card.cpp" />
     <ClCompile Include="CardOne.cpp" />
+    <ClCompile Include="Card_3.cpp" />
+    <ClCompile Include="Card_4.cpp" />
+    <ClCompile Include="Card_5.cpp" />
+    <ClCompile Include="Card_6.cpp" />
     <ClCompile Include="Cell.cpp" />
     <ClCompile Include="CellPosition.cpp" />
     <ClCompile Include="CMUgraphicsLib\auxil.cpp" />
@@ -188,6 +192,10 @@
     <ClInclude Include="ApplicationManager.h" />
     <ClInclude Include="Card.h" />
     <ClInclude Include="CardOne.h" />
+    <ClInclude Include="Card_3.h" />
+    <ClInclude Include="Card_4.h" />
+    <ClInclude Include="Card_5.h" />
+    <ClInclude Include="Card_6.h" />
     <ClInclude Include="Cell.h" />
     <ClInclude Include="CellPosition.h" />
     <ClInclude Include="CMUgraphicsLib\auxil.h" />
