@@ -4,3 +4,16 @@ Card_5::Card_5(const CellPosition& pos) : Card(pos) // set the cell position of 
 {
 	cardNumber = 5; // set the inherited cardNumber data member with the card number (1 here)
 }
+
+
+void Card_5::Apply(Grid* pGrid, Player* pPlayer)
+{
+	int x, y;
+	pGrid->PrintErrorMessage("Moves the player backward with the same number of steps that he just rolled.");
+	pGrid->GetInput()->GetPointClicked(x,y);
+	
+	position.AddCellNum(DiceNum * -2);
+	pGrid->UpdatePlayerCell(pGrid->GetCurrentPlayer(),position);
+}
+
+

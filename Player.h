@@ -33,6 +33,8 @@ public:
 
 	///TODO: You can add setters and getters for data members here (if needed)
 
+	int GetDiceNum() const;  // Added by Khaled for Card 5
+
 	// ====== Drawing Functions ======
 
 	void Draw(Output* pOut) const;			// Draws the Player's Circle on its current cell
