@@ -148,6 +148,22 @@ Ladder * Grid::GetNextLadder(const CellPosition & position)
 	return NULL; // not found
 }
 
+Player * Grid::GetNearestPlayer(Player * p) const
+{
+	int min = 100;
+	int z;
+	for (int i = 0; i < p->GetplayerNum(); i++)
+	{
+		if ( PlayerList[i]->GetStepCount() - p->GetStepCount() > 0)
+			if (PlayerList[i]->GetStepCount() - p->GetStepCount() < min)
+			{
+				min = p->GetStepCount() - PlayerList[i]->GetStepCount();
+				z = i;
+			}
+	}
+	return PlayerList[z];
+}
+
 
 // ========= User Interface Functions =========
 

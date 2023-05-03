@@ -8,12 +8,11 @@ Card_5::Card_5(const CellPosition& pos) : Card(pos) // set the cell position of 
 
 void Card_5::Apply(Grid* pGrid, Player* pPlayer)
 {
-	int x, y;
-	pGrid->PrintErrorMessage("Moves the player backward with the same number of steps that he just rolled.");
-	pGrid->GetInput()->GetPointClicked(x,y);
-	
+	Card::Apply(pGrid, pPlayer);
+	pGrid->PrintErrorMessage("Card 5 : Move the player backward with the same number of steps that he just rolled.");
+
 	position.AddCellNum(DiceNum * -2);
-	pGrid->UpdatePlayerCell(pGrid->GetCurrentPlayer(),position);
+	pGrid->UpdatePlayerCell(pPlayer, position);
 }
 
 

@@ -43,6 +43,17 @@ int Player::GetDiceNum() const
 	return justRolledDiceNum;
 }
 
+int Player::GetStepCount() const
+{
+	return stepCount;
+}
+
+
+int Player::GetplayerNum() const
+{
+	return playerNum;
+}
+
 // ====== Drawing Functions ======
 
 void Player::Draw(Output* pOut) const

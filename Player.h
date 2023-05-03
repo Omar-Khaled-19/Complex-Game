@@ -34,6 +34,8 @@ public:
 	///TODO: You can add setters and getters for data members here (if needed)
 
 	int GetDiceNum() const;  // Added by Khaled for Card 5
+	int GetStepCount() const; // Added by Khaled for Card 7
+	int GetplayerNum() const; // Added by Khaled for Card 7
 
 	// ====== Drawing Functions ======
 

@@ -1,13 +1,11 @@
 #pragma once
 #include "Card.h"
-
-class Card_6 : public Card
+class Card_8 : public Card
 {
-	int cellNum;
+	int amount;
 
 public:
-	
-	Card_6(const CellPosition& pos);
+	Card_8(const CellPosition& pos) ;
 
 	virtual void ReadCardParameters(Grid* pGrid);
 
