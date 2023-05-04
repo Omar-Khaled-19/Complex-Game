@@ -202,6 +202,7 @@
     <ClCompile Include="Card_8.cpp">
       <Filter>GameObjects\Cards</Filter>
     </ClCompile>
+    <ClCompile Include="Card_12.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h">
@@ -331,5 +332,6 @@
     <ClInclude Include="Card_8.h">
       <Filter>GameObjects\Cards</Filter>
     </ClInclude>
+    <ClInclude Include="Card_12.h" />
   </ItemGroup>
 </Project>

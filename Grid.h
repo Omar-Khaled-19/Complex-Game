@@ -29,7 +29,8 @@ class Grid
 
 	Card * Clipboard;	   // This is used in copy/cut/paste card (should be set in copy/cut and got in paste)
 
-	bool endGame;	       // A boolean indicating if the Game is ended or not (a player reaches the end cell of the grid or not)
+	bool endGame;	 // A boolean indicating if the Game is ended or not (a player reaches the end cell of the grid or not)
+
 
 public:
 

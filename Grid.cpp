@@ -121,6 +121,7 @@ void Grid::AdvanceCurrentPlayer()
 	currPlayerNumber = (currPlayerNumber + 1) % MaxPlayerCount; // this generates value from 0 to MaxPlayerCount - 1
 }
 
+
 // ========= Other Getters =========
 
 
@@ -154,7 +155,10 @@ Player * Grid::GetNearestPlayer(Player * p) const
 	int z;
 	for (int i = 0; i < p->GetplayerNum(); i++)
 	{
-		if ( PlayerList[i]->GetStepCount() - p->GetStepCount() > 0)
+		if (p == PlayerList[i])
+			continue;
+		
+		if ( PlayerList[i]->GetStepCount() - p->GetStepCount() >= 0)
 			if (PlayerList[i]->GetStepCount() - p->GetStepCount() < min)
 			{
 				min = p->GetStepCount() - PlayerList[i]->GetStepCount();

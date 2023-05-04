@@ -11,7 +11,7 @@ void Card_5::Apply(Grid* pGrid, Player* pPlayer)
 	Card::Apply(pGrid, pPlayer);
 	pGrid->PrintErrorMessage("Card 5 : Move the player backward with the same number of steps that he just rolled.");
 
-	position.AddCellNum(DiceNum * -2);
+	position.AddCellNum(-DiceNum);
 	pGrid->UpdatePlayerCell(pPlayer, position);
 }
 

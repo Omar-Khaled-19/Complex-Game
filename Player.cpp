@@ -54,6 +54,36 @@ int Player::GetplayerNum() const
 	return playerNum;
 }
 
+void Player::SetPrison(bool p)
+{
+	Prison = p;
+}
+
+bool Player::GetPrison()
+{
+	return Prison;
+}
+
+void Player::SetCard_3(bool c)
+{
+	Card_3 = c;
+}
+
+void Player::SetCard_4(bool c)
+{
+	Card_4 = c;
+}
+
+bool Player::GetCard_3()
+{
+	return Card_3;
+}
+
+bool Player::GetCard_4()
+{
+	return Card_4;
+}
+
 // ====== Drawing Functions ======
 
 void Player::Draw(Output* pOut) const

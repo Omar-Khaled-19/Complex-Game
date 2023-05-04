@@ -9,6 +9,8 @@ void Card_3::Apply(Grid* pGrid, Player* pPlayer)
 {
 	Card::Apply(pGrid, pPlayer);
 	pGrid->PrintErrorMessage("Card 3 : Gives the player an extra dice roll. ");
+	
+	pPlayer->SetCard_3(true);
 }
 
 

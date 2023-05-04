@@ -25,6 +25,6 @@ void Card_8::Apply(Grid* pGrid, Player* pPlayer)
 		pPlayer->SetWallet(pPlayer->GetWallet() - amount);
 	else
 	{
-		
+		pPlayer->SetPrison(true);
 	}
 }
