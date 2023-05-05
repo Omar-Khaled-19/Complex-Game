@@ -82,7 +82,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		pAct = new AddCardAction(this);
 		break;
 	case COPY_CARD:
-
+		pAct->Execute();
 		break;
 
 	case CUT_CARD:
