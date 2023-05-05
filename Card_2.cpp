@@ -15,8 +15,10 @@ void Card_2::Apply(Grid* pGrid, Player* pPlayer)
 
 	if (pLadder==NULL)
 		return;
-	
-	pGrid->GetCurrentPlayer()->MoveToNextladder(pGrid, pLadder);
+
+	int x = pLadder->GetObjCellNum(); //get the required cell number to move
+
+	pPlayer->Move(pGrid, (x - pPlayer->GetStepCount()));
 
 	
 }

@@ -14,7 +14,10 @@ public:
 
 	GameObject(const CellPosition & pos); // Constructor for initializing data members
 	
+
 	CellPosition GetPosition() const;     // A Getter for position
+
+	int GetObjCellNum() const;            // added by Amr for Card_2
 
 	// ============ Virtual Functions ============
 

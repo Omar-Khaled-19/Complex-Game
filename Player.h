@@ -37,6 +37,8 @@ public:
 
 	///TODO: You can add setters and getters for data members here (if needed)
 
+	void SetjustRolledDiceNum(int DiceNum); //Added by Amr
+
 	int GetDiceNum() const;  // Added by Khaled for Card 5
 	int GetStepCount() const; // Added by Khaled for Card 7
 	int GetplayerNum() const; // Added by Khaled for Card 7
@@ -63,7 +65,6 @@ public:
 	                                            // and Applies the Game Object's effect (if any) of the end reached cell 
 	                                            // for example, if the end cell contains a ladder, take it
 
-	void MoveToNextladder(Grid* pGrid , Ladder* pLadder);         // Added by Amr for card_2
 	
 	void AppendPlayerInfo(string & playersInfo) const; // Appends player's info to the input string, 
 	                                                   // for example: P0(wallet, turnCount)
