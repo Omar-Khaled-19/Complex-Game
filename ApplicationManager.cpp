@@ -7,6 +7,19 @@
 
 ///TODO: Add #include for all action types
 
+#include"CopyCardAction.h"
+#include"CutCardAction.h"
+#include"PasteCardAction.h"
+#include"SaveGridAction.h"
+#include"OpenGridAction.h"
+#include"DeleteGameObjectAction.h"
+#include"SwitchToPlayModeAction.h"
+#include"ExitAction.h"
+#include"AddSnakeAction.h"
+#include"InputDiceValueAction.h"
+#include"NewGameAction.h"
+#include"SwitchToDesignModeAction.h"
+
 ApplicationManager::ApplicationManager()
 {
 	// Create Input, output and Grid
@@ -26,7 +39,7 @@ ApplicationManager::~ApplicationManager()
 //								Interface Management Functions						//
 //==================================================================================//
 
-Grid * ApplicationManager::GetGrid() const
+Grid* ApplicationManager::GetGrid() const
 {
 	return pGrid;
 }
@@ -49,7 +62,7 @@ ActionType ApplicationManager::GetUserAction() const
 ////////////////////////////////////////////////////////////////////////////////////
 
 // Creates an action and executes it
-void ApplicationManager::ExecuteAction(ActionType ActType) 
+void ApplicationManager::ExecuteAction(ActionType ActType)
 {
 	Action* pAct = NULL;
 
@@ -60,28 +73,65 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		pAct = new AddLadderAction(this);
 		break;
 
+	case ADD_SNAKE:
+
+		break;
+
 	case ADD_CARD:
 		// create an object of AddCardAction here
 		pAct = new AddCardAction(this);
 		break;
+	case COPY_CARD:
 
-	case EXIT:
+		break;
+
+	case CUT_CARD:
+
+		break;
+
+	case PASTE_CARD:
+
+		break;
+
+	case DELETE_GAME_OBJECT:
+
+		break;
+
+	case SAVE_GRID:
+
+		break;
+
+	case OPEN_GRID:
+
 		break;
 
 	case TO_PLAY_MODE:
 		pOut->CreatePlayModeToolBar(); // temporary till you made its action class (CHANGE THIS LATTER)
 		break;
 
+	case EXIT:
+		break;
+
+
+
 	case ROLL_DICE:
 		// create an object of RollDiceAction here
 		pAct = new RollDiceAction(this);
+		break;
+
+	case INPUT_DICE_VALUE:
+
+		break;
+
+	case NEW_GAME:
+
 		break;
 
 	case TO_DESIGN_MODE:
 		pOut->CreateDesignModeToolBar(); // temporary till you made its action class (CHANGE THIS LATTER)
 		break;
 
-		
+
 
 		///TODO: Add a case for EACH Action type in the Design mode or Play mode
 
@@ -92,7 +142,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	}
 
 	// Execute the created action
-	if(pAct != NULL)
+	if (pAct != NULL)
 	{
 		pAct->Execute(); // Execute
 		delete pAct;	 // Action is not needed any more after executing ==> delete it
