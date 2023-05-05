@@ -2,6 +2,7 @@
 
 #include "Grid.h"
 #include "Cell.h"
+#include "Ladder.h"
 
 class Player
 {
@@ -61,6 +62,8 @@ public:
 	void Move(Grid * pGrid, int diceNumber);	// Moves the Player with the passed diceNumber 
 	                                            // and Applies the Game Object's effect (if any) of the end reached cell 
 	                                            // for example, if the end cell contains a ladder, take it
+
+	void MoveToNextladder(Grid* pGrid , Ladder* pLadder);         // Added by Amr for card_2
 	
 	void AppendPlayerInfo(string & playersInfo) const; // Appends player's info to the input string, 
 	                                                   // for example: P0(wallet, turnCount)

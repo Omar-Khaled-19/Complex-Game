@@ -134,6 +134,14 @@ void Player::Move(Grid * pGrid, int diceNumber)
 
 }
 
+
+void Player::MoveToNextladder(Grid* pgrid , Ladder* pladder)    // Added by Amr for Card_2
+{
+	int x = (pladder->GetPosition().GetCellNum()) - stepCount;
+	Move(pgrid , x);
+
+}
+
 void Player::AppendPlayerInfo(string & playersInfo) const
 {
 	playersInfo += "P" + to_string(playerNum) + "(" ;
