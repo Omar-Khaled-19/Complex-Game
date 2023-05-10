@@ -2,8 +2,7 @@
 
 Snake::Snake(const CellPosition& startCellPos, const CellPosition& endCellPos) : GameObject(startCellPos)
 {
-    if (endCellPos.VCell() <= startCellPos.VCell() || endCellPos.HCell() != startCellPos.HCell()) // added by amr
-
+    
         this->endCellPos = endCellPos;
 }
 
