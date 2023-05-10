@@ -11,14 +11,12 @@ void Card_2::Apply(Grid* pGrid, Player* pPlayer)
 	Card::Apply(pGrid, pPlayer);
 	pGrid->PrintErrorMessage("Card 2 : Move to next ladder if exist. ");
 
-	Ladder* pLadder = pGrid->GetNextLadder(GetPosition());
+	Ladder* pLadder = pGrid->GetNextLadder(position);
 
 	if (pLadder==NULL)
 		return;
 
-	int x = pLadder->GetObjCellNum(); //get the required cell number to move
-
-	pPlayer->Move(pGrid, (x - pPlayer->GetStepCount()));
+	pGrid->UpdatePlayerCell(pPlayer, pLadder->GetPosition());
 
 	
 }

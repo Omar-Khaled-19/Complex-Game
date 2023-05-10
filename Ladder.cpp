@@ -2,6 +2,8 @@
 
 Ladder::Ladder(const CellPosition & startCellPos, const CellPosition & endCellPos) : GameObject(startCellPos)
 {
+	if (endCellPos.VCell() >= startCellPos.VCell() || endCellPos.HCell() != startCellPos.HCell()) // added by amr
+
 	this->endCellPos = endCellPos;
 
 	///TODO: Do the needed validation
@@ -22,10 +24,18 @@ void Ladder::Apply(Grid* pGrid, Player* pPlayer)
 	// == Here are some guideline steps (numbered below) to implement this function ==
 	
 	// 1- Print a message "You have reached a ladder. Click to continue ..." and wait mouse click
+	Output* pOut = pGrid->GetOutput();
+	Input* pIn = pGrid->GetInput();
+
+	pOut->PrintMessage("You have reached a ladder. Click to continue ...");
+
+	pIn->GetUserAction();
 
 	// 2- Apply the ladder's effect by moving the player to the endCellPos
-	//    Review the "pGrid" functions and decide which function can be used for that
+    //    Review the "pGrid" functions and decide which function can be used for that
 	
+	pGrid->UpdatePlayerCell(pPlayer , endCellPos);
+
 }
 
 CellPosition Ladder::GetEndPosition() const

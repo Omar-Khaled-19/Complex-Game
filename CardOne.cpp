@@ -20,13 +20,17 @@ void CardOne::ReadCardParameters(Grid * pGrid)
 
 
 	// 1- Get a Pointer to the Input / Output Interfaces from the Grid
+	Output* pOut = pGrid->GetOutput();
+	Input* pIn = pGrid->GetInput();
 
 
 	// 2- Read an Integer from the user using the Input class and set the walletAmount parameter with it
 	//    Don't forget to first print to a descriptive message to the user like:"New CardOne: Enter its wallet amount ..."
-	
+
 	pGrid->PrintErrorMessage("New CardOne: Enter its wallet amount: ");
-	walletAmount = pGrid->GetInput()->GetInteger(pGrid->GetOutput());
+	
+	walletAmount = pIn->GetInteger(pOut);
+	
 
 	// [ Note ]:
 	// In CardOne, the only parameter of CardOne is the "walletAmount" value to decrease from player
@@ -50,5 +54,5 @@ void CardOne::Apply(Grid* pGrid, Player* pPlayer)
 	Card::Apply(pGrid, pPlayer);
 	pGrid->PrintErrorMessage("CardOne: Decrements your wallet by the amount you entered ");
 	// 2- Decrement the wallet of pPlayer by the walletAmount data member of CardOne
-	pPlayer->SetWallet(pPlayer->GetWallet() - walletAmount);
+	pPlayer->DecrementWallet(walletAmount) ;
 }

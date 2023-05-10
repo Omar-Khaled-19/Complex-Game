@@ -32,12 +32,11 @@ public:
 
 	void SetWallet(int wallet);		// A setter for the wallet
 	int GetWallet() const;			// a getter for the wallet
+	void DecrementWallet(int decrementAmount);   // Added by Amr for Card 1
 
 	int GetTurnCount() const;		// A getter for the turnCount
 
 	///TODO: You can add setters and getters for data members here (if needed)
-
-	void SetjustRolledDiceNum(int DiceNum); //Added by Amr
 
 	int GetDiceNum() const;  // Added by Khaled for Card 5
 	int GetStepCount() const; // Added by Khaled for Card 7
