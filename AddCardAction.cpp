@@ -3,6 +3,16 @@
 #include "Input.h"
 #include "Output.h"
 #include "CardOne.h"
+#include "Card_2.h"
+#include "Card_3.h"
+#include "Card_4.h"
+#include "Card_5.h"
+#include "Card_6.h"
+#include "Card_7.h"
+#include "Card_8.h"
+#include "Card_9.h"
+#include "Card_10.h"
+#include "Card_11.h"
 
 AddCardAction::AddCardAction(ApplicationManager *pApp) : Action(pApp)
 {
@@ -22,14 +32,21 @@ void AddCardAction::ReadActionParameters()
 	// == Here are some guideline steps (numbered below) to implement this function ==
 
 	// 1- Get a Pointer to the Input / Output Interfaces
+	Grid* pGrid = pManager->GetGrid();
+	Output* pOut = pGrid->GetOutput();
+	Input* pIn = pGrid->GetInput();
 	
 	// 2- Read the "cardNumber" parameter and set its data member
+	cardNumber = pIn->GetUserAction();
+
 	
 	// 3- Read the "cardPosition" parameter (its cell position) and set its data member
+	cardPosition = pIn->GetCellClicked();
 
 	// 4- Make the needed validations on the read parameters
 
 	// 5- Clear status bar
+	pOut->ClearStatusBar();
 }
 
 void AddCardAction::Execute() 
@@ -42,6 +59,7 @@ void AddCardAction::Execute()
 	// == Here are some guideline steps (numbered below) to implement this function ==
 
 	// 1- The first line of any Action Execution is to read its parameter first
+	ReadActionParameters();
 	
 	// 2- Switch case on cardNumber data member and create the appropriate card object type
 	Card * pCard = NULL; // will point to the card object type
@@ -50,7 +68,36 @@ void AddCardAction::Execute()
 	case 1:
 		pCard = new CardOne(cardPosition);
 		break;
-
+	case 2:
+		pCard = new Card_2(cardPosition);
+		break;
+	case 3:
+		pCard = new Card_3(cardPosition);
+		break;
+	case 4:
+		pCard = new Card_4(cardPosition);
+		break;
+	case 5:
+		pCard = new Card_5(cardPosition);
+		break;
+	case 6:
+		pCard = new Card_6(cardPosition);
+		break;
+	case 7:
+		pCard = new Card_7(cardPosition);
+		break;
+	case 8:
+		pCard = new Card_8(cardPosition);
+		break;
+	case 9:
+		pCard = new Card_9(cardPosition);
+		break;
+	case 10:
+		pCard = new Card_10(cardPosition);
+		break;
+	case 11:
+		pCard = new Card_11(cardPosition);
+		break;
 		// A- Add the remaining cases
 
 	}
@@ -59,10 +106,13 @@ void AddCardAction::Execute()
 	if (pCard)
 	{
 		// A- We get a pointer to the Grid from the ApplicationManager
+		Grid* pGrid = pManager->GetGrid(); 
 
 		// B- Make the "pCard" reads its card parameters: ReadCardParameters(), It is virtual and depends on the card type
 
+
 		// C- Add the card object to the GameObject of its Cell:
+
 
 		// D- if the GameObject cannot be added in the Cell, Print the appropriate error message on statusbar
 		
