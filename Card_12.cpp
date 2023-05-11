@@ -11,5 +11,7 @@ void Card_12::Apply(Grid* pGrid, Player* pPlayer)
 	Card::Apply(pGrid, pPlayer);
 	pGrid->PrintErrorMessage("Card 12: ");
 
+	pGrid->LeastWalletPlayer(pPlayer);
+
 }
 

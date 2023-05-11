@@ -152,7 +152,7 @@ Ladder * Grid::GetNextLadder(const CellPosition & position)
 	return NULL; // not found
 }
 
-Player * Grid::GetNearestPlayer(Player * p) const
+Player * Grid::GetNearestPlayer(Player * p) 
 {
 	int min = 100;
 	int z;
@@ -164,9 +164,24 @@ Player * Grid::GetNearestPlayer(Player * p) const
 		if ( PlayerList[i]->GetStepCount() - p->GetStepCount() >= 0)
 			if (PlayerList[i]->GetStepCount() - p->GetStepCount() < min)
 			{
-				min = p->GetStepCount() - PlayerList[i]->GetStepCount();
+				min = PlayerList[i]->GetStepCount() - p->GetStepCount();
 				z = i;
 			}
+	}
+	return PlayerList[z];
+}
+
+Player* Grid::LeastWalletPlayer(Player* p)
+{
+	int z;
+	int min = INFINITY;
+	for (int i = 0; i < p->GetplayerNum(); i++)
+	{
+		if (p == PlayerList[i])
+			continue;
+
+		if (PlayerList[i]->GetWallet() < min)
+			z = i;
 	}
 	return PlayerList[z];
 }

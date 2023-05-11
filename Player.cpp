@@ -98,7 +98,7 @@ void Player::Draw(Output* pOut) const
 
 
 	///TODO: use the appropriate output function to draw the player with "playerColor"
-
+	pOut->DrawPlayer(pCell->GetCellPosition(), playerNum, playerColor);
 }
 
 void Player::ClearDrawing(Output* pOut) const
