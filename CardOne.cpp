@@ -1,6 +1,6 @@
 #include "CardOne.h"
 
-CardOne::CardOne(const CellPosition & pos) : Card(pos) // set the cell position of the card
+CardOne::CardOne(const CellPosition& pos) : Card(pos) // set the cell position of the card
 {
 	cardNumber = 1; // set the inherited cardNumber data member with the card number (1 here)
 }
@@ -9,10 +9,10 @@ CardOne::~CardOne(void)
 {
 }
 
-void CardOne::ReadCardParameters(Grid * pGrid)
+void CardOne::ReadCardParameters(Grid* pGrid)
 {
-	
-	
+
+
 	///TODO: Implement this function as mentioned in the guideline steps (numbered below) below
 
 
@@ -28,9 +28,9 @@ void CardOne::ReadCardParameters(Grid * pGrid)
 	//    Don't forget to first print to a descriptive message to the user like:"New CardOne: Enter its wallet amount ..."
 
 	pGrid->PrintErrorMessage("New CardOne: Enter its wallet amount: ");
-	
+
 	walletAmount = pIn->GetInteger(pOut);
-	
+
 
 	// [ Note ]:
 	// In CardOne, the only parameter of CardOne is the "walletAmount" value to decrease from player
@@ -38,14 +38,14 @@ void CardOne::ReadCardParameters(Grid * pGrid)
 	// to be able to perform his Apply() action
 
 	// 3- Clear the status bar
-	pGrid->GetOutput()->ClearStatusBar();
+	pOut->ClearStatusBar();
 }
 
 void CardOne::Apply(Grid* pGrid, Player* pPlayer)
 {
-		
+
 	///TODO: Implement this function as mentioned in the guideline steps (numbered below) below
-	
+
 
 	// == Here are some guideline steps (numbered below) (numbered below) to implement this function ==
 
@@ -54,5 +54,5 @@ void CardOne::Apply(Grid* pGrid, Player* pPlayer)
 	Card::Apply(pGrid, pPlayer);
 	pGrid->PrintErrorMessage("CardOne: Decrements your wallet by the amount you entered ");
 	// 2- Decrement the wallet of pPlayer by the walletAmount data member of CardOne
-	pPlayer->DecrementWallet(walletAmount) ;
+	pPlayer->DecrementWallet(walletAmount);
 }

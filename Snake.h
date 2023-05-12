@@ -9,15 +9,15 @@ public:
 
 public:
 
-	Snake(const CellPosition& startCellPos, const CellPosition& endCellPos); 
+	Snake(const CellPosition& startCellPos, const CellPosition& endCellPos);
 
-	virtual void Draw(Output* pOut) const; 
+	virtual void Draw(Output* pOut) const;
 
-	virtual void Apply(Grid* pGrid, Player* pPlayer); 
+	virtual void Apply(Grid* pGrid, Player* pPlayer);
 
-	CellPosition GetEndPosition() const; 
+	CellPosition GetEndPosition() const;
 
-	virtual ~Snake(); 
+	virtual ~Snake();
 
 };
 

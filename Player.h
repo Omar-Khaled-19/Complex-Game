@@ -6,34 +6,36 @@
 
 class Player
 {
-	Cell * pCell;		   // pointer to the current Cell of the player
+	Cell* pCell;		   // pointer to the current Cell of the player
 
 	const int playerNum;   // the player number (from 0 to MaxPlayerCount-1)
-	                       // player number does NOT change after construction (const.)
+	// player number does NOT change after construction (const.)
 
 	int stepCount;		   // step count which is the same as his cellNum: from 1 to NumVerticalCells*NumHorizontalCells
 	int wallet;		       // player's wallet (how many coins he has -- integer)
 	int justRolledDiceNum; // the current dice number which is just rolled by the player
 	int turnCount;         // a counter that starts with 0, is incremented with each dice roll
-	                       // and reset again when reached 3
-	                       // it is used to indicate when to move and when to add to your wallet
+	// and reset again when reached 3
+	// it is used to indicate when to move and when to add to your wallet
 	bool Prison;	//
 	bool Card_3;	//	All added by Khaled for Cards
 	bool Card_4;	//
 
 public:
 
-	Player(Cell * pCell, int playerNum); // Constructor making any needed initializations
+	Player(Cell* pCell, int playerNum); // Constructor making any needed initializations
 
 	// ====== Setters and Getters ======
 
-	void SetCell(Cell * cell);		// A setter for the pCell
+	void SetCell(Cell* cell);		// A setter for the pCell
 	Cell* GetCell() const;			// A getter for the pCell
 
 	void SetWallet(int wallet);		// A setter for the wallet
 	int GetWallet() const;			// a getter for the wallet
 	void DecrementWallet(int decrementAmount);   // Added by Amr for Card 1
-
+	void ResetWallet();                          //Added by Amr for NewGameAction
+	void ResetPlayerPosition();                  //Added by Amr for NewGameAction
+	void ResetPlayerParameters();                //Added by Amr for NewGameAction
 	int GetTurnCount() const;		// A getter for the turnCount
 
 	///TODO: You can add setters and getters for data members here (if needed)
@@ -43,14 +45,14 @@ public:
 	int GetplayerNum() const; // Added by Khaled for Card 7
 
 	void SetPrison(bool p); // Added by Khaled for Card 8
-	bool GetPrison();	
+	bool GetPrison();
 
 	void SetCard_3(bool c);	// Added by Khaled for Card 3
 	bool GetCard_3();
-	
+
 	void SetCard_4(bool c); // Added by Khaled for Card 4
 	bool GetCard_4();
-	
+
 
 	// ====== Drawing Functions ======
 
@@ -60,13 +62,12 @@ public:
 
 	// ====== Game Functions ======
 
-	void Move(Grid * pGrid, int diceNumber);	// Moves the Player with the passed diceNumber 
-	                                            // and Applies the Game Object's effect (if any) of the end reached cell 
-	                                            // for example, if the end cell contains a ladder, take it
+	void Move(Grid* pGrid, int diceNumber);	// Moves the Player with the passed diceNumber 
+	// and Applies the Game Object's effect (if any) of the end reached cell 
+	// for example, if the end cell contains a ladder, take it
 
-	
-	void AppendPlayerInfo(string & playersInfo) const; // Appends player's info to the input string, 
-	                                                   // for example: P0(wallet, turnCount)
+
+	void AppendPlayerInfo(string& playersInfo) const; // Appends player's info to the input string, 
+	// for example: P0(wallet, turnCount)
 
 };
-

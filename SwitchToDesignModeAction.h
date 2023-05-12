@@ -1,7 +1,21 @@
 #pragma once
 #include "Action.h"
-class SwitchToDesignModeAction :
-    public Action
+#include "Output.h"
+class SwitchToDesignModeAction : public Action
 {
+
+    Output* pOut;
+
+public:
+
+    SwitchToDesignModeAction(ApplicationManager* pApp);
+
+    virtual void ReadActionParameters();
+
+    virtual void Execute();
+
+    ~SwitchToDesignModeAction();
+
+
 };
 
