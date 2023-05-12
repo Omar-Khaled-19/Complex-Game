@@ -190,6 +190,11 @@ Player* Grid::LeastWalletPlayer(Player* p)
 	return PlayerList[z];
 }
 
+void Grid::SetcurrPlayerNumber(int playerNum)
+{
+	currPlayerNumber = playerNum;
+}
+
 
 // ========= User Interface Functions =========
 

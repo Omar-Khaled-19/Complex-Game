@@ -32,10 +32,8 @@ public:
 
 	void SetWallet(int wallet);		// A setter for the wallet
 	int GetWallet() const;			// a getter for the wallet
-	void DecrementWallet(int decrementAmount);   // Added by Amr for Card 1
-	void ResetWallet();                          //Added by Amr for NewGameAction
-	void ResetPlayerPosition();                  //Added by Amr for NewGameAction
-	void ResetPlayerParameters();                //Added by Amr for NewGameAction
+	void DecrementWallet(int decrementAmount);   // Added by Amr for Card 1               
+	void ResetPlayer(Grid * pGrid);                //Added by Amr for NewGameAction
 	int GetTurnCount() const;		// A getter for the turnCount
 
 	///TODO: You can add setters and getters for data members here (if needed)

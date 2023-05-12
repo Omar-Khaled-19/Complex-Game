@@ -124,7 +124,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		break;
 
 	case NEW_GAME:
-
+		pAct = new NewGameAction(this);
 		break;
 
 	case TO_DESIGN_MODE:

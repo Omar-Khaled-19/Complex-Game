@@ -74,6 +74,8 @@ public:
 
 	Player* LeastWalletPlayer(Player* p); // Added by Khaled for Card 12
 
+	void SetcurrPlayerNumber(int playerNum);
+
 	// ========= User Interface Functions =========
 
 	void UpdateInterface() const;		// It Updates the Grid according to the last state of the game
