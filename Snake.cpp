@@ -27,3 +27,4 @@ CellPosition Snake::GetEndPosition() const
 
 Snake::~Snake()
 {
+}
