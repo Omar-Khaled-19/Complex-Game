@@ -16,7 +16,7 @@ void SwitchToDesignModeAction::Execute()
 	Grid* pGrid = pManager->GetGrid();
 	Output* pOut = pGrid->GetOutput();
 
-	pGrid->PrintErrorMessage("Switch To Design Mode.. ");
+	pGrid->PrintErrorMessage("Switch To Design Mode. Click to continue.. ");
 
 	pOut->CreateDesignModeToolBar();
 }
