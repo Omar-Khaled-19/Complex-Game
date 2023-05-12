@@ -2,8 +2,8 @@
 
 Snake::Snake(const CellPosition& startCellPos, const CellPosition& endCellPos) : GameObject(startCellPos)
 {
-    
-        this->endCellPos = endCellPos;
+
+    this->endCellPos = endCellPos;
 }
 
 void Snake::Draw(Output* pOut) const
@@ -14,22 +14,16 @@ void Snake::Draw(Output* pOut) const
 
 void Snake::Apply(Grid* pGrid, Player* pPlayer)
 {
-	Output* pOut = pGrid->GetOutput();
-	Input* pIn = pGrid->GetInput();
+    pGrid->PrintErrorMessage("You have reached a snake. Click to continue ...");
 
-	pOut->PrintMessage("You have reached a snake. Click to continue ...");
-
-	pIn->GetUserAction();
-
-	pGrid->UpdatePlayerCell(pPlayer , endCellPos);
+    pGrid->UpdatePlayerCell(pPlayer, endCellPos);
 
 }
 
 CellPosition Snake::GetEndPosition() const
 {
-    return CellPosition();
+    return endCellPos;
 }
 
 Snake::~Snake()
 {
-}

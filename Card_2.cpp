@@ -13,12 +13,12 @@ void Card_2::Apply(Grid* pGrid, Player* pPlayer)
 
 	Ladder* pLadder = pGrid->GetNextLadder(position);
 
-	if (pLadder==NULL)
+	if (pLadder == NULL)
 		return;
 
 	pGrid->UpdatePlayerCell(pPlayer, pLadder->GetPosition());
 
-	
+
 }
 
 Card_2::~Card_2()
