@@ -179,7 +179,7 @@ Player* Grid::LeastWalletPlayer(Player* p)
 {
 	int z;
 	int min = INFINITY;
-	for (int i = 0; i < p->GetplayerNum(); i++)
+	for (int i = 0; i < MaxPlayerCount; i++)
 	{
 		if (p == PlayerList[i])
 			continue;

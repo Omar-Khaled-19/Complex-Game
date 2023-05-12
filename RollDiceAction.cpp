@@ -31,7 +31,7 @@ void RollDiceAction::Execute()
 		pGrid->PrintErrorMessage("The game has ended. You can't roll the dice. Click here.. ");
 		return;
 	}
-	
+
 
 	// -- If not ended, do the following --:
 
@@ -45,7 +45,28 @@ void RollDiceAction::Execute()
 
 	// 4- Move the currentPlayer using function Move of class player
 
+	if (pPlayer->GetPrison())
+	{
+		pGrid->PrintErrorMessage("Sorry you can't play ");
+		return;
+	}
+
+	if (pPlayer->GetCard_4())
+	{
+		pGrid->PrintErrorMessage("Sorry you can't play ");
+		pPlayer->SetCard_4(false);
+		return;
+	}
+
 	pPlayer->Move(pGrid, diceNumber);
+
+	if (pPlayer->GetCard_3())
+	{
+		Execute();
+		pPlayer->SetCard_3(false);
+	}
+
+
 
 	// 5- Advance the current player number of pGrid
 

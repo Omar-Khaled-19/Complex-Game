@@ -71,12 +71,6 @@ int Player::GetStepCount() const
 	return stepCount;
 }
 
-
-int Player::GetplayerNum() const
-{
-	return playerNum;
-}
-
 void Player::SetPrison(bool p)
 {
 	Prison = p;
