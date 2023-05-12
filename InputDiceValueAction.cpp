@@ -35,10 +35,11 @@ void InputDiceValueAction::ReadActionParameters()
 void InputDiceValueAction::Execute()
 {
 	Grid* pGrid = pManager->GetGrid();
+	Output* pOut = pGrid->GetOutput();
 
 	if (pGrid->GetEndGame())
 	{
-		pGrid->PrintErrorMessage("The game has ended. You can't enter a dice value. Click here.. ");
+		pOut->PrintMessage("The game has ended. You can't enter a dice value. Click here.. ");
 		return;
 	}
 

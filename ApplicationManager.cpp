@@ -120,7 +120,8 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		break;
 
 	case INPUT_DICE_VALUE:
-
+		pAct = new InputDiceValueAction(this);
+		break;
 		break;
 
 	case NEW_GAME:

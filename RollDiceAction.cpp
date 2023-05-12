@@ -31,7 +31,7 @@ void RollDiceAction::Execute()
 		pGrid->PrintErrorMessage("The game has ended. You can't roll the dice. Click here.. ");
 		return;
 	}
-
+	
 
 	// -- If not ended, do the following --:
 

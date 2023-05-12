@@ -124,6 +124,7 @@ void Player::ClearDrawing(Output* pOut) const
 
 
 	///TODO: use the appropriate output function to draw the player with "cellColor" (to clear it)
+	pOut->DrawPlayer(pCell->GetCellPosition(), playerNum, cellColor);   // By Amr
 
 }
 
@@ -173,12 +174,12 @@ void Player::Move(Grid* pGrid, int diceNumber)
 // 5- Use pGrid->UpdatePlayerCell() func to Update player's cell POINTER (pCell) with the cell in the passed position, "pos" (the updated one)
 //    the importance of this function is that it Updates the pCell pointer of the player and Draws it in the new position
 
-	pGrid->UpdatePlayerCell(this, newCellPos);
+	pGrid->UpdatePlayerCell(pGrid->GetCurrentPlayer(), newCellPos);
 
 	// 6- Apply() the game object of the reached cell (if any)
 	GameObject* pGobject = pCell->GetGameObject();
 	if (pGobject)
-		pGobject->Apply(pGrid, this);
+		pGobject->Apply(pGrid, pGrid->GetCurrentPlayer());
 
 	// 7- Check if the player reached the end cell of the whole game, and if yes, Set end game with true: pGrid->SetEndGame(true)
 	if (newCellPos.GetCellNum() == 99)
