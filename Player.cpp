@@ -49,8 +49,10 @@ int Player::GetDiceNum() const
 	return justRolledDiceNum;
 }
 
-int Player::GetStepCount() const
+
+int Player::GetStepCount()
 {
+	stepCount = pCell->GetCellPosition().GetCellNum();
 	return stepCount;
 }
 
@@ -60,13 +62,15 @@ int Player::GetplayerNum() const
 	return playerNum;
 }
 
-void Player::SetPrison(bool p)
+void Player::SetPrison(int p)
 {
 	Prison = p;
 }
 
-bool Player::GetPrison()
+int Player::GetPrison()
 {
+	if (Prison != 0)
+		Prison--;
 	return Prison;
 }
 

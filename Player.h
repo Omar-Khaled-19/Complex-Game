@@ -17,7 +17,7 @@ class Player
 	int turnCount;         // a counter that starts with 0, is incremented with each dice roll
 	                       // and reset again when reached 3
 	                       // it is used to indicate when to move and when to add to your wallet
-	bool Prison;	//
+	int Prison = 0;	//
 	bool Card_3;	//	All added by Khaled for Cards
 	bool Card_4;	//
 
@@ -39,11 +39,11 @@ public:
 	///TODO: You can add setters and getters for data members here (if needed)
 
 	int GetDiceNum() const;  // Added by Khaled for Card 5
-	int GetStepCount() const; // Added by Khaled for Card 7
+	int GetStepCount(); // Added by Khaled for Card 7
 	int GetplayerNum() const; // Added by Khaled for Card 7
 
-	void SetPrison(bool p); // Added by Khaled for Card 8
-	bool GetPrison();	
+	void SetPrison(int p); // Added by Khaled for Card 8
+	int GetPrison();
 
 	void SetCard_3(bool c);	// Added by Khaled for Card 3
 	bool GetCard_3();
