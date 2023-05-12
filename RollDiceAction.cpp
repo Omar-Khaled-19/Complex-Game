@@ -48,6 +48,7 @@ void RollDiceAction::Execute()
 	if (pPlayer->GetPrison())
 	{
 		pGrid->PrintErrorMessage("Sorry you can't play ");
+		pGrid->AdvanceCurrentPlayer();
 		return;
 	}
 
@@ -55,6 +56,7 @@ void RollDiceAction::Execute()
 	{
 		pGrid->PrintErrorMessage("Sorry you can't play ");
 		pPlayer->SetCard_4(false);
+		pGrid->AdvanceCurrentPlayer();
 		return;
 	}
 
@@ -62,11 +64,9 @@ void RollDiceAction::Execute()
 
 	if (pPlayer->GetCard_3())
 	{
-		Execute();
 		pPlayer->SetCard_3(false);
+		Execute();
 	}
-
-
 
 	// 5- Advance the current player number of pGrid
 
