@@ -264,6 +264,14 @@ void Output::PrintMessage(string msg) const	//Prints a message on status bar
 	pWind->DrawString(10, UI.height - (int)(UI.StatusBarHeight / 1.3), msg);
 }
 
+void Output::PrintNumber(int printedNumber) const
+{
+	ClearStatusBar();	
+	pWind->SetPen(UI.MsgColor);
+	pWind->SetFont(18, BOLD, BY_NAME, "Verdana");
+	pWind->DrawInteger(10, UI.height - (int)(UI.StatusBarHeight / 1.3), printedNumber);
+}
+
 //////////////////////////////////////////////////////////////////////////////////////////
 
 void Output::PrintPlayersInfo(string info)
