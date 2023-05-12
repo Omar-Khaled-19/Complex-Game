@@ -37,7 +37,7 @@ void AddCardAction::ReadActionParameters()
 	Input* pIn = pGrid->GetInput();
 	
 	// 2- Read the "cardNumber" parameter and set its data member
-	cardNumber = pIn->GetUserAction();
+	cardNumber = pIn->GetInteger(pOut);
 
 	
 	// 3- Read the "cardPosition" parameter (its cell position) and set its data member
@@ -109,12 +109,18 @@ void AddCardAction::Execute()
 		Grid* pGrid = pManager->GetGrid(); 
 
 		// B- Make the "pCard" reads its card parameters: ReadCardParameters(), It is virtual and depends on the card type
-
+		pCard->ReadCardParameters(pGrid);
 
 		// C- Add the card object to the GameObject of its Cell:
+		bool added = pGrid->AddObjectToCell(pCard);
 
 
 		// D- if the GameObject cannot be added in the Cell, Print the appropriate error message on statusbar
+		if (!added)
+		{
+			// Print an appropriate message
+			pGrid->PrintErrorMessage("Error: Card can't be added ! Click to continue ...");
+		}
 		
 	}
 

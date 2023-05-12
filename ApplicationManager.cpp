@@ -122,14 +122,13 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	case INPUT_DICE_VALUE:
 		pAct = new InputDiceValueAction(this);
 		break;
-		break;
 
 	case NEW_GAME:
 
 		break;
 
 	case TO_DESIGN_MODE:
-		pOut->CreateDesignModeToolBar(); // temporary till you made its action class (CHANGE THIS LATTER)
+		pAct = new SwitchToDesignModeAction(this); // temporary till you made its action class (CHANGE THIS LATTER)
 		break;
 
 
