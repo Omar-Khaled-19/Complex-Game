@@ -28,24 +28,45 @@ void RollDiceAction::Execute()
 
 	if (pGrid->GetEndGame())                                                           // by Amr
 	{
-		pGrid->PrintErrorMessage("The game has ended. You can't roll the dice. Click here.. ");
+		pGrid->PrintErrorMessage("The game has ended. You can't roll the dice.");
 		return;
 	}
-	
+
 
 	// -- If not ended, do the following --:
 
 	// 2- Generate a random number from 1 to 6 --> This step is done for you
 	srand((int)time(NULL)); // time is for different seed each run
 	int diceNumber = 1 + rand() % 6; // from 1 to 6 --> should change seed
-
+	pOut->PrintNumber(diceNumber);
 	// 3- Get the "current" player from pGrid
 
 	Player* pPlayer = pGrid->GetCurrentPlayer();
 
 	// 4- Move the currentPlayer using function Move of class player
 
+	if (pPlayer->GetPrison())
+	{
+		pGrid->PrintErrorMessage("Sorry you can't play ");
+		pGrid->AdvanceCurrentPlayer();
+		return;
+	}
+
+	if (pPlayer->GetCard_4())
+	{
+		pGrid->PrintErrorMessage("Sorry you can't play ");
+		pPlayer->SetCard_4(false);
+		pGrid->AdvanceCurrentPlayer();
+		return;
+	}
+
 	pPlayer->Move(pGrid, diceNumber);
+
+	if (pPlayer->GetCard_3())
+	{
+		pPlayer->SetCard_3(false);
+		Execute();
+	}
 
 	// 5- Advance the current player number of pGrid
 

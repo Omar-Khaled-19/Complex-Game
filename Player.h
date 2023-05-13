@@ -17,9 +17,9 @@ class Player
 	int turnCount;         // a counter that starts with 0, is incremented with each dice roll
 	// and reset again when reached 3
 	// it is used to indicate when to move and when to add to your wallet
-	bool Prison;	//
-	bool Card_3;	//	All added by Khaled for Cards
-	bool Card_4;	//
+	bool Prison = false;	//
+	bool Card_3 = false;	//	All added by Khaled for Cards
+	bool Card_4 = false;	//
 
 public:
 
@@ -32,17 +32,15 @@ public:
 
 	void SetWallet(int wallet);		// A setter for the wallet
 	int GetWallet() const;			// a getter for the wallet
-	void DecrementWallet(int decrementAmount);   // Added by Amr for Card 1
-	void ResetWallet();                          //Added by Amr for NewGameAction
-	void ResetPlayerPosition();                  //Added by Amr for NewGameAction
-	void ResetPlayerParameters();                //Added by Amr for NewGameAction
+	void DecrementWallet(int decrementAmount);   // Added by Amr for Card 1               
+	void ResetPlayer(Grid * pGrid);                //Added by Amr for NewGameAction
 	int GetTurnCount() const;		// A getter for the turnCount
 
 	///TODO: You can add setters and getters for data members here (if needed)
 
 	int GetDiceNum() const;  // Added by Khaled for Card 5
 	int GetStepCount() const; // Added by Khaled for Card 7
-	int GetplayerNum() const; // Added by Khaled for Card 7
+
 
 	void SetPrison(bool p); // Added by Khaled for Card 8
 	bool GetPrison();

@@ -38,21 +38,14 @@ void Player::DecrementWallet(int decrementAmount)
 	SetWallet(GetWallet() - decrementAmount);
 }
 
-void Player::ResetWallet()
+void Player::ResetPlayer(Grid * pGrid)
 {
-	wallet = 100;
-}
-
-void Player::ResetPlayerPosition()
-{
-	pCell = new Cell(8, 0);
-}
-
-void Player::ResetPlayerParameters()
-{
-	ResetWallet();
-	ResetPlayerPosition();
 	turnCount = 0;
+	wallet = 100;
+	CellPosition* newCellPos = new CellPosition(1);
+	pGrid->UpdatePlayerCell(this, *newCellPos);
+
+	delete newCellPos;
 }
 
 int Player::GetTurnCount() const
@@ -69,12 +62,6 @@ int Player::GetDiceNum() const
 int Player::GetStepCount() const
 {
 	return stepCount;
-}
-
-
-int Player::GetplayerNum() const
-{
-	return playerNum;
 }
 
 void Player::SetPrison(bool p)
@@ -174,12 +161,12 @@ void Player::Move(Grid* pGrid, int diceNumber)
 // 5- Use pGrid->UpdatePlayerCell() func to Update player's cell POINTER (pCell) with the cell in the passed position, "pos" (the updated one)
 //    the importance of this function is that it Updates the pCell pointer of the player and Draws it in the new position
 
-	pGrid->UpdatePlayerCell(pGrid->GetCurrentPlayer(), newCellPos);
+	pGrid->UpdatePlayerCell(this, newCellPos);
 
 	// 6- Apply() the game object of the reached cell (if any)
 	GameObject* pGobject = pCell->GetGameObject();
 	if (pGobject)
-		pGobject->Apply(pGrid, pGrid->GetCurrentPlayer());
+		pGobject->Apply(pGrid, this);
 
 	// 7- Check if the player reached the end cell of the whole game, and if yes, Set end game with true: pGrid->SetEndGame(true)
 	if (newCellPos.GetCellNum() == 99)
