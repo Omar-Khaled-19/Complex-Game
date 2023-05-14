@@ -209,7 +209,7 @@ void Player::Move(Grid* pGrid, int diceNumber)
 
 	// 6- Apply() the game object of the reached cell (if any)
 
-	while (pCell->HasGameObject())
+	if (pCell->HasGameObject())
 	{
 		GameObject* pGobject = pCell->GetGameObject();
 		pGobject->Apply(pGrid, this);
