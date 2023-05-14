@@ -59,6 +59,17 @@ void RollDiceAction::Execute()
 		pGrid->AdvanceCurrentPlayer();
 		return;
 	}
+	
+	if (pGrid->GetPoison())
+	{
+		pGrid->PrintErrorMessage("You got: " + to_string(diceNumber));
+		diceNumber--;
+	}
+
+	if (pGrid->GetFire())
+	{
+		pGrid->Fire(pGrid->GetCurrentPlayer());
+	}
 
 	pPlayer->Move(pGrid, diceNumber);
 

@@ -84,6 +84,19 @@ public:
 
 	void SetcurrPlayerNumber(int playerNum);
 
+	int poison = 0;
+	void SetPoison(int p);
+	int GetPoison();
+
+	void Ice(int i);
+	
+	int fire = 0;
+	void SetFire(int f);
+	int GetFire();
+	void Fire(Player *pPlayer);
+
+	void Lighting();
+
 	// ========= User Interface Functions =========
 
 	void UpdateInterface() const;		// It Updates the Grid according to the last state of the game

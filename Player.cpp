@@ -135,13 +135,53 @@ void Player::Move(Grid* pGrid, int diceNumber)
 	// 2- Check the turnCount to know if the wallet recharge turn comes (recharge wallet instead of move)
 	//    If yes, recharge wallet and reset the turnCount and return from the function (do NOT move)
 
+
+
+	Input* pIn = pGrid->GetInput();
+	Output* pOut = pGrid->GetOutput();
+
 	if (turnCount == 3)
 	{
-		SetWallet(wallet + (diceNumber * 10));
 		turnCount = 0;
-		return;
+		pGrid->PrintErrorMessage("Recharge your Wallet press 0, Launch a special attak press 1");
+		bool b = pIn->GetInteger(pOut);
+		if (!b)
+		{
+			SetWallet(wallet + (diceNumber * 10));
+			return;
+		}
+		else
+		{
+			pGrid->PrintErrorMessage("Choose which special attak to use 1:I , 2:F , 3:P, 4:L ");
+			int c = pIn->GetInteger(pOut);
+			if (c == 1)
+			{
+				pGrid->PrintErrorMessage("Choose a player to ice him");
+				int i = pIn->GetInteger(pOut);
+				pGrid->Ice(i);
+				return;
+			}
+			else if (c == 2)
+			{
+				pGrid->PrintErrorMessage("Choose a player to fire him");
+				int i = pIn->GetInteger(pOut);
+				pGrid->SetFire(4);
+				return;
+			}
+			else if (c == 3)
+			{
+				pGrid->PrintErrorMessage("Choose a player to poison him");
+				int i = pIn->GetInteger(pOut);
+				pGrid->SetPoison(6);
+				return;
+			}
+			else
+			{
+				pGrid->Lighting();
+				return;
+			}
+		}
 	}
-
 	if (GetWallet() <= 1)
 		return;
 

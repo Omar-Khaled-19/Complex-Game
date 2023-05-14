@@ -268,6 +268,53 @@ void Grid::SetcurrPlayerNumber(int playerNum)
 	currPlayerNumber = playerNum;
 }
 
+// Bonus Functions
+
+void Grid::Ice(int i)
+{
+	PlayerList[i]->SetCard_4(true);
+}
+
+void Grid::SetFire(int f)
+{
+	fire = f;
+}
+
+int Grid::GetFire()
+{
+	if (fire != 0)
+		fire--;
+	return fire;
+}
+
+void Grid::Fire(Player *pPlayer)
+{
+	pPlayer->SetWallet(pPlayer->GetWallet() - 20);
+}
+
+void Grid::SetPoison(int p)
+{
+	poison = p;
+}
+
+int Grid::GetPoison()
+{
+	if (poison != 0)
+		poison--;
+	return poison;
+}
+
+void Grid::Lighting()
+{
+	for (int i = 0; i < MaxPlayerCount - 1; i++)
+	{
+		if (PlayerList[i] == GetCurrentPlayer())
+			continue;
+
+		PlayerList[i]->SetWallet(PlayerList[i]->GetWallet() - 20);
+	}
+}
+
 
 // ========= User Interface Functions =========
 
