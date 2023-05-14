@@ -13,6 +13,11 @@ void Card_6::ReadCardParameters(Grid* pGrid)
 	pGrid->GetOutput()->ClearStatusBar();
 }
 
+void Card_6::transfereCardParameters(Card* pCard)
+{
+	cellNum = ((Card_6*)pCard)->cellNum;
+}
+
 void Card_6::Apply(Grid* pGrid, Player* pPlayer)
 {
 	Card::Apply(pGrid, pPlayer);

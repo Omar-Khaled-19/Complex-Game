@@ -63,7 +63,7 @@ void Grid::RemoveObjectFromCell(const CellPosition & pos)
 	if (pos.IsValidCell()) // Check if valid position
 	{
 		// Note: you can deallocate the object here before setting the pointer to null if it is needed
-		delete CellList[pos.VCell()][pos.HCell()]->GetGameObject();
+		delete CellList[pos.VCell()][pos.HCell()]->GetGameObject(); // added by shereef
 		CellList[pos.VCell()][pos.HCell()]->SetGameObject(NULL);
 	}
 }
@@ -81,7 +81,7 @@ void Grid::UpdatePlayerCell(Player * player, const CellPosition & newPosition)
 	player->Draw(pOut);
 }
 
-void Grid::saveall(ofstream& OutFile, int type)
+void Grid::SaveAll(ofstream& OutFile, int type)    // added by shereef
 {
 	GameObject* Arrgo[99];
 	int laddersnum = 0;
@@ -184,12 +184,12 @@ void Grid::AdvanceCurrentPlayer()
 	currPlayerNumber = (currPlayerNumber + 1) % MaxPlayerCount; // this generates value from 0 to MaxPlayerCount - 1
 }
 
-Card* Grid::PosHasCard(CellPosition& pos)
+Card* Grid::PosHasCard(CellPosition& pos)                                   //added by shereef
 {
 	return CellList[pos.VCell()][pos.HCell()]->HasCard();
 }
 
-GameObject* Grid::PosHasGameObject(CellPosition& pos)
+GameObject* Grid::PosHasGameObject(CellPosition& pos)                           //added by shereef
 {
 	return CellList[pos.VCell()][pos.HCell()]->GetGameObject();
 }
@@ -266,6 +266,53 @@ Player* Grid::LeastWalletPlayer(Player* p)
 void Grid::SetcurrPlayerNumber(int playerNum)
 {
 	currPlayerNumber = playerNum;
+}
+
+// Bonus Functions
+
+void Grid::Ice(int i)
+{
+	PlayerList[i]->SetCard_4(true);
+}
+
+void Grid::SetFire(int f)
+{
+	fire = f;
+}
+
+int Grid::GetFire()
+{
+	if (fire != 0)
+		fire--;
+	return fire;
+}
+
+void Grid::Fire(Player *pPlayer)
+{
+	pPlayer->SetWallet(pPlayer->GetWallet() - 20);
+}
+
+void Grid::SetPoison(int p)
+{
+	poison = p;
+}
+
+int Grid::GetPoison()
+{
+	if (poison != 0)
+		poison--;
+	return poison;
+}
+
+void Grid::Lighting()
+{
+	for (int i = 0; i < MaxPlayerCount - 1; i++)
+	{
+		if (PlayerList[i] == GetCurrentPlayer())
+			continue;
+
+		PlayerList[i]->SetWallet(PlayerList[i]->GetWallet() - 20);
+	}
 }
 
 

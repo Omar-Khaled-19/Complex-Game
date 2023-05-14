@@ -38,7 +38,7 @@ void Player::DecrementWallet(int decrementAmount)
 	SetWallet(GetWallet() - decrementAmount);
 }
 
-void Player::ResetPlayer(Grid * pGrid)
+void Player::ResetPlayer(Grid* pGrid)
 {
 	turnCount = 0;
 	wallet = 100;
@@ -64,13 +64,15 @@ int Player::GetStepCount() const
 	return stepCount;
 }
 
-void Player::SetPrison(bool p)
+void Player::SetPrison(int p)
 {
 	Prison = p;
 }
 
-bool Player::GetPrison()
+int Player::GetPrison()
 {
+	if (Prison != 0)
+		Prison--;
 	return Prison;
 }
 
@@ -133,21 +135,63 @@ void Player::Move(Grid* pGrid, int diceNumber)
 	// 2- Check the turnCount to know if the wallet recharge turn comes (recharge wallet instead of move)
 	//    If yes, recharge wallet and reset the turnCount and return from the function (do NOT move)
 
+
+
+	Input* pIn = pGrid->GetInput();
+	Output* pOut = pGrid->GetOutput();
+
 	if (turnCount == 3)
 	{
-		SetWallet(wallet + (diceNumber * 10));
 		turnCount = 0;
-		return;
+		pGrid->PrintErrorMessage("Recharge your Wallet press 0, Launch a special attak press 1");
+		bool b = pIn->GetInteger(pOut);
+		if (!b)
+		{
+			SetWallet(wallet + (diceNumber * 10));
+			return;
+		}
+		else
+		{
+			pGrid->PrintErrorMessage("Choose which special attak to use 1:I , 2:F , 3:P, 4:L ");
+			int c = pIn->GetInteger(pOut);
+			if (c == 1)
+			{
+				pGrid->PrintErrorMessage("Choose a player to ice him");
+				int i = pIn->GetInteger(pOut);
+				pGrid->Ice(i);
+				return;
+			}
+			else if (c == 2)
+			{
+				pGrid->PrintErrorMessage("Choose a player to fire him");
+				int i = pIn->GetInteger(pOut);
+				pGrid->SetFire(4);
+				return;
+			}
+			else if (c == 3)
+			{
+				pGrid->PrintErrorMessage("Choose a player to poison him");
+				int i = pIn->GetInteger(pOut);
+				pGrid->SetPoison(6);
+				return;
+			}
+			else
+			{
+				pGrid->Lighting();
+				return;
+			}
+		}
 	}
-
 	if (GetWallet() <= 1)
 		return;
 
 	// 3- Set the justRolledDiceNum with the passed diceNumber
 
-	CellPosition newCellPos = pCell->GetCellPosition();
 
-	justRolledDiceNum = ((newCellPos.GetCellNum() + diceNumber) <= 99) ? diceNumber : (99 - newCellPos.GetCellNum());
+
+	CellPosition newCellPos = pCell->GetCellPosition();
+	int PlayerCellNumber = newCellPos.GetCellNum();
+	justRolledDiceNum = ((PlayerCellNumber + diceNumber) <= 99) ? diceNumber : (99 - newCellPos.GetCellNum());
 
 	// 4- Get the player current cell position, say "pos", and add to it the diceNumber (update the position)
 	//    Using the appropriate function of CellPosition class to update "pos"
@@ -164,12 +208,15 @@ void Player::Move(Grid* pGrid, int diceNumber)
 	pGrid->UpdatePlayerCell(this, newCellPos);
 
 	// 6- Apply() the game object of the reached cell (if any)
-	GameObject* pGobject = pCell->GetGameObject();
-	if (pGobject)
-		pGobject->Apply(pGrid, this);
 
+	if (pCell->HasGameObject())
+	{
+		GameObject* pGobject = pCell->GetGameObject();
+		pGobject->Apply(pGrid, this);
+	}
 	// 7- Check if the player reached the end cell of the whole game, and if yes, Set end game with true: pGrid->SetEndGame(true)
-	if (newCellPos.GetCellNum() == 99)
+
+	if (pCell->IsEndCell())
 	{
 		pGrid->PrintErrorMessage("You Won! Click to end game.. ");
 		pGrid->SetEndGame(true);

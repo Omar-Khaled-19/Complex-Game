@@ -10,6 +10,7 @@ public:
 
 	virtual void ReadCardParameters(Grid* pGrid);
 
+	void transfereCardParameters(Card* pCard);
 
 	virtual void Apply(Grid* pGrid, Player* pPlayer);
 

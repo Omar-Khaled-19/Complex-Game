@@ -36,6 +36,9 @@ public:
 	Snake * HasSnake() const;	// Checks if pGameObject is a Snake Then returns it if a snake or returns NULL if not snake
 	Card * HasCard() const;	    // Checks if pGameObject is a Card Then returns it if a card or returns NULL if not card
 	
+	bool HasGameObject() const;        //Added by Amr for Move Player
+	bool IsEndCell() const;            //Added by Amr for Move Player
+
 	// ======= Drawing Functions ======= 
 
 	void DrawCellOrCard(Output* pOut) const;	// Draws the Cell either has Card or No Card (No ladders/snakes are drawn here)

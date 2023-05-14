@@ -13,6 +13,10 @@ void Card_9::ReadCardParameters(Grid* pGrid)
 	pGrid->GetOutput()->ClearStatusBar();
 }
 
+void Card_9::transfereCardParameters(Card* pCard)
+{
+}
+
 void Card_9::Apply(Grid* pGrid, Player* pPlayer)
 {
 	Card::Apply(pGrid, pPlayer);
