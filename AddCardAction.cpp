@@ -1,5 +1,5 @@
 #include "AddCardAction.h"
-
+#include"Grid.h"
 #include "Input.h"
 #include "Output.h"
 #include "CardOne.h"
@@ -40,6 +40,7 @@ void AddCardAction::ReadActionParameters()
 	
 	// 2- Read the "cardNumber" parameter and set its data member
 	pOut->PrintMessage("New Card: Enter its Number ...");
+	
 	cardNumber = pIn->GetInteger(pOut);
 
 
@@ -48,7 +49,14 @@ void AddCardAction::ReadActionParameters()
 	cardPosition = pIn->GetCellClicked();
 
 	// 4- Make the needed validations on the read parameters
+	if (cardNumber > 12 || cardNumber < 1)
+	{
+		pGrid->PrintErrorMessage("Invalid card number , please re-enter");
+		return;
+	}
 
+
+	
 	// 5- Clear status bar
 	pOut->ClearStatusBar();
 }
@@ -122,7 +130,7 @@ void AddCardAction::Execute()
 
 
 		// D- if the GameObject cannot be added in the Cell, Print the appropriate error message on statusbar
-		if (!added)
+		if (added)
 		{
 			// Print an appropriate message
 			pGrid->PrintErrorMessage("Error: Card can't be added ! Click to continue ...");

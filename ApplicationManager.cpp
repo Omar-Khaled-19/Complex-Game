@@ -74,7 +74,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		break;
 
 	case ADD_SNAKE:
-
+		pAct = new AddSnakeAction(this);
 		break;
 
 	case ADD_CARD:

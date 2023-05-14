@@ -21,16 +21,19 @@ void AddSnakeAction::ReadActionParameters()
 	Input* pIn = pGrid->GetInput();
 
 	// Read the startPos parameter
-	pOut->PrintMessage("New Ladder: Click on its Start Cell ...");
+	pOut->PrintMessage("New Snake: Click on its Start Cell ...");
 	startPos = pIn->GetCellClicked();
 
 	// Read the endPos parameter
-	pOut->PrintMessage("New Ladder: Click on its End Cell ...");
+	pOut->PrintMessage("New Snake: Click on its End Cell ...");
 	endPos = pIn->GetCellClicked();
 
 
 
 	///TODO: Make the needed validations on the read parameters
+	
+
+
 
 
 
