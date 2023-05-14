@@ -13,6 +13,7 @@
 #include "Card_9.h"
 #include "Card_10.h"
 #include "Card_11.h"
+#include "Card_12.h"
 
 AddCardAction::AddCardAction(ApplicationManager *pApp) : Action(pApp)
 {
@@ -38,10 +39,12 @@ void AddCardAction::ReadActionParameters()
 	Input* pIn = pGrid->GetInput();
 	
 	// 2- Read the "cardNumber" parameter and set its data member
+	pOut->PrintMessage("New Card: Enter its Number ...");
 	cardNumber = pIn->GetInteger(pOut);
 
-	
+
 	// 3- Read the "cardPosition" parameter (its cell position) and set its data member
+	pOut->PrintMessage("New Card: Click on its Cell ...");
 	cardPosition = pIn->GetCellClicked();
 
 	// 4- Make the needed validations on the read parameters
@@ -99,8 +102,10 @@ void AddCardAction::Execute()
 	case 11:
 		pCard = new Card_11(cardPosition);
 		break;
+	case 12:
+		pCard = new Card_12(cardPosition);
+		break;
 		// A- Add the remaining cases
-
 	}
 
 	// 3- if pCard is correctly set in the switch case (i.e. if pCard is pointing to an object -- NOT NULL)
