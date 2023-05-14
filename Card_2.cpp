@@ -16,7 +16,9 @@ void Card_2::Apply(Grid* pGrid, Player* pPlayer)
 	if (pLadder == NULL)
 		return;
 
-	pGrid->UpdatePlayerCell(pPlayer, pLadder->GetPosition());
+	CellPosition LadderStartPos = pLadder->GetPosition();
+	pGrid->UpdatePlayerCell(pPlayer, LadderStartPos);
+	pLadder->Apply(pGrid, pPlayer);
 
 
 }

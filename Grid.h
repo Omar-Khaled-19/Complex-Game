@@ -46,12 +46,13 @@ public:
 
 	void RemoveObjectFromCell(const CellPosition & pos); // Removes the GameObject of the Cell of the passed "position"
 	                                                     // Note: You may need to change the return type of this function (Think)
+	
 
 	void UpdatePlayerCell(Player * player, const CellPosition & newPosition); // Update the player's pCell with the CellList's Cell pointer of the "newPosition",
 	                                                                          // Clears the player's circle from the previous cell
 	    																	  // and  Draws it in the new cell
 
-	void saveall(ofstream& OutFile, int type);
+	void SaveAll(ofstream& OutFile, int type); // added by shereef
 
 	// ========= Setters and Getters Functions =========
 
@@ -68,9 +69,9 @@ public:
 
 	///TODO: add any needed setter/getter "EXCEPT" ANY setters or getters of "CellList" or "PlayerList" (Forbidden for class Responsibilities)
 
-	Card* PosHasCard(CellPosition& pos);
+	Card* PosHasCard(CellPosition& pos);             //added by shereef
 
-	GameObject* PosHasGameObject(CellPosition& pos);
+	GameObject* PosHasGameObject(CellPosition& pos);            //added by shereef
 
 
 	// ========= Other Getters =========

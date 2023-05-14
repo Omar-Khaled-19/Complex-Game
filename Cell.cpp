@@ -63,6 +63,22 @@ Card * Cell::HasCard() const
 
 }
 
+bool Cell::HasGameObject() const
+{
+	if (HasSnake() || HasLadder() || HasCard())
+		return true;
+
+	return false;
+}
+
+bool Cell::IsEndCell() const
+{
+	if (position.GetCellNum() == 99)
+		return true;
+
+	return false;
+}
+
 
 // ======= Drawing Functions ======= 
 
