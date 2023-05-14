@@ -11,6 +11,8 @@ public:
 
 	void transfereCardParameters(Card* pCard);
 
+	virtual void Save(ofstream& OutFile, int type);
+
 	virtual void Apply(Grid* pGrid, Player* pPlayer);
 };
 

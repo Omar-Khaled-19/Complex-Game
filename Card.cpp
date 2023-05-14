@@ -43,6 +43,13 @@ void Card::Apply(Grid* pGrid, Player* pPlayer)
 
 void Card::Save(ofstream& OutFile, int type)
 {
+	if (OutFile.is_open())
+	{
+
+		OutFile << cardNumber << "      " << position.GetCellNum() <<  endl;
+
+
+	}
 }
 
 void Card::transfereCardParameters(Card* pCard)

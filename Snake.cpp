@@ -30,6 +30,13 @@ CellPosition Snake::GetEndPosition() const
 
 void Snake::Save(ofstream& OutFile, int type)
 {
+    if (OutFile.is_open())
+    {
+
+        OutFile << position.GetCellNum() << "      " << endCellPos.GetCellNum() << endl;
+
+
+    }
 }
 
 int Snake::GetSnakesNum()

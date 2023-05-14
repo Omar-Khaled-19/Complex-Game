@@ -98,7 +98,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		break;
 
 	case SAVE_GRID:
-		
+		pAct = new SaveGridAction(this);
 		break;
 
 	case OPEN_GRID:

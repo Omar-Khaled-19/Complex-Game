@@ -136,12 +136,27 @@ void Grid::SaveAll(ofstream& OutFile, int type)    // added by shereef
 		Arrgo[i + laddersnum + snakesnum] = ArrCards[i];
 
 	}
-	for (int i = 0; i < laddersnum; i++)
-	{
-		
 
+	OutFile << laddersnum << endl;
+	
+		for (int i = 0; i < laddersnum; i++)
+	{
+			Arrgo[i]->Save(OutFile, type);
 	}
 
+		OutFile << snakesnum << endl;
+
+		for (int i = 0; i < snakesnum; i++)
+		{
+
+			Arrgo[i + laddersnum]->Save(OutFile, type);
+		}
+		OutFile << cardsnum << endl;
+		for (int i = 0; i < cardsnum; i++)
+		{
+			Arrgo[i + laddersnum + snakesnum]->Save(OutFile, type);
+
+		}
 }
 
 
