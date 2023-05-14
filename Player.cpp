@@ -64,13 +64,15 @@ int Player::GetStepCount() const
 	return stepCount;
 }
 
-void Player::SetPrison(bool p)
+void Player::SetPrison(int p)
 {
 	Prison = p;
 }
 
-bool Player::GetPrison()
+int Player::GetPrison()
 {
+	if (Prison != 0)
+		Prison--;
 	return Prison;
 }
 
