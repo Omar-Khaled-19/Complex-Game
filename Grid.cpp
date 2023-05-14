@@ -1,5 +1,5 @@
 #include "Grid.h"
-
+#include"Snake.h"
 #include "Cell.h"
 #include "GameObject.h"
 #include "Ladder.h"
@@ -63,7 +63,7 @@ void Grid::RemoveObjectFromCell(const CellPosition & pos)
 	if (pos.IsValidCell()) // Check if valid position
 	{
 		// Note: you can deallocate the object here before setting the pointer to null if it is needed
-
+		delete CellList[pos.VCell()][pos.HCell()]->GetGameObject();
 		CellList[pos.VCell()][pos.HCell()]->SetGameObject(NULL);
 	}
 }
@@ -79,6 +79,69 @@ void Grid::UpdatePlayerCell(Player * player, const CellPosition & newPosition)
 
 	// Draw the player's circle on the new cell position
 	player->Draw(pOut);
+}
+
+void Grid::saveall(ofstream& OutFile, int type)
+{
+	GameObject* Arrgo[99];
+	int laddersnum = 0;
+
+	int snakesnum = 0;
+
+	int cardsnum = 0;
+
+	Ladder* Arrladder[99];
+
+	Snake* ArrSnakes[99];
+
+	Card* ArrCards[99];
+
+	for (int i = NumVerticalCells - 1; i >= 0; i--)
+	{
+		for (int j = 0; j < NumHorizontalCells; j++)
+		{
+			if (CellList[i][j]->HasLadder())
+			{
+				Arrladder[laddersnum] = CellList[i][j]->HasLadder();
+				laddersnum++;
+			}
+			else if (CellList[i][j]->HasSnake())
+			{
+				ArrSnakes[snakesnum] = CellList[i][j]->HasSnake();
+				snakesnum++;
+			}
+			else if (CellList[i][j]->HasCard())
+			{
+				ArrCards[cardsnum] = CellList[i][j]->HasCard();
+				cardsnum++;
+			}
+		}
+	}
+
+	int objectsnum = laddersnum + snakesnum + cardsnum;
+
+	for (int i = 0; i < laddersnum; i++)
+	{
+		Arrgo[i] = Arrladder[i];
+
+	}
+
+	for (int i = 0; i < snakesnum; i++)
+	{
+
+		Arrgo[i + laddersnum] = ArrSnakes[i];
+	}
+	for (int i = 0; i < cardsnum; i++)
+	{
+		Arrgo[i + laddersnum + snakesnum] = ArrCards[i];
+
+	}
+	for (int i = 0; i < laddersnum; i++)
+	{
+		
+
+	}
+
 }
 
 
@@ -119,6 +182,16 @@ bool Grid::GetEndGame() const
 void Grid::AdvanceCurrentPlayer()
 {
 	currPlayerNumber = (currPlayerNumber + 1) % MaxPlayerCount; // this generates value from 0 to MaxPlayerCount - 1
+}
+
+Card* Grid::PosHasCard(CellPosition& pos)
+{
+	return CellList[pos.VCell()][pos.HCell()]->HasCard();
+}
+
+GameObject* Grid::PosHasGameObject(CellPosition& pos)
+{
+	return CellList[pos.VCell()][pos.HCell()]->GetGameObject();
 }
 
 

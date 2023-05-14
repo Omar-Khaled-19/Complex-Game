@@ -82,27 +82,27 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		pAct = new AddCardAction(this);
 		break;
 	case COPY_CARD:
-		pAct->Execute();
+		pAct = new CopyCardAction(this);
 		break;
 
 	case CUT_CARD:
-
+		pAct = new CutCardAction(this);
 		break;
 
 	case PASTE_CARD:
-
+		pAct = new PasteCardAction(this);
 		break;
 
 	case DELETE_GAME_OBJECT:
-
+		
 		break;
 
 	case SAVE_GRID:
-
+		
 		break;
 
 	case OPEN_GRID:
-
+		
 		break;
 
 	case TO_PLAY_MODE:

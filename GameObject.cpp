@@ -16,6 +16,11 @@ int GameObject::GetObjCellNum() const
 	return position.GetCellNum();
 }
 
+void GameObject::UpdateGameObjectCellPosition(CellPosition& pos)
+{
+	position = pos;
+}
+
 GameObject::~GameObject()
 {
 }

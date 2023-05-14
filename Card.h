@@ -8,6 +8,7 @@
 // it may have additional data members and functions like: Apply(), ...etc. which have different implementation depending on Card Number
 class Card : public GameObject
 {
+	static int cardnums; 
 protected:
 	int cardNumber; // an integer representing the card number
 
@@ -25,7 +26,12 @@ public:
 
 	virtual void Apply(Grid* pGrid, Player* pPlayer);  // It applies the effect of the Card Type on the passed player
 	                                                   // It is a virtual function (implementation depends on Card Type)
+	virtual void Save(ofstream& OutFile, int type);
+	
+	virtual void transfereCardParameters(Card* pCard);
 
+	static int GetCardNums();
+	
 	virtual ~Card(); // A Virtual Destructor
 };
 

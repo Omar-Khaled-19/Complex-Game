@@ -1,10 +1,12 @@
 #include "Ladder.h"
 
+int Ladder::laddernums = 0;
+
 Ladder::Ladder(const CellPosition& startCellPos, const CellPosition& endCellPos) : GameObject(startCellPos)
 {
 
 	this->endCellPos = endCellPos;
-
+	laddernums++;
 	///TODO: Do the needed validation
 }
 
@@ -38,6 +40,23 @@ CellPosition Ladder::GetEndPosition() const
 	return endCellPos;
 }
 
+void Ladder::Save(ofstream& OutFile, int type)
+{
+	if (OutFile.is_open())
+	{
+
+		OutFile << position.GetCellNum() <<"      " << endCellPos.GetCellNum() << endl;
+
+
+	}
+}
+
+int Ladder::GetLadderNums()
+{
+	return laddernums;
+}
+
 Ladder::~Ladder()
 {
+	laddernums--;
 }

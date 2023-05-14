@@ -1,9 +1,12 @@
 #include "Snake.h"
 
+int Snake::snakesnum = 0;
 Snake::Snake(const CellPosition& startCellPos, const CellPosition& endCellPos) : GameObject(startCellPos)
 {
 
     this->endCellPos = endCellPos;
+
+    snakesnum++;
 }
 
 void Snake::Draw(Output* pOut) const
@@ -25,6 +28,16 @@ CellPosition Snake::GetEndPosition() const
     return endCellPos;
 }
 
+void Snake::Save(ofstream& OutFile, int type)
+{
+}
+
+int Snake::GetSnakesNum()
+{
+    return snakesnum;
+}
+
 Snake::~Snake()
 {
+    snakesnum--;
 }

@@ -1,9 +1,11 @@
 #include "Card.h"
 
-
+int Card::cardnums = 0;
 Card::Card(const CellPosition & pos) : GameObject(pos) // sets the cell position of the GameObject
 {
 	position = pos;
+
+	cardnums++;
 }
 
 void Card::SetCardNumber(int cnum)
@@ -39,6 +41,20 @@ void Card::Apply(Grid* pGrid, Player* pPlayer)
 	pGrid->PrintErrorMessage("You have reached card " + to_string(cardNumber) + ". Click to continue ...");
 }
 
+void Card::Save(ofstream& OutFile, int type)
+{
+}
+
+void Card::transfereCardParameters(Card* pCard)
+{
+}
+
+int Card::GetCardNums()
+{
+	return cardnums;
+}
+
 Card::~Card()
 {
+	cardnums--;
 }

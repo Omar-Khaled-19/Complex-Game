@@ -19,6 +19,7 @@ public:
 
 	int GetObjCellNum() const;            // added by Amr for Card_2
 
+	void UpdateGameObjectCellPosition(CellPosition& pos);
 	// ============ Virtual Functions ============
 
 	virtual void Draw(Output* pOut) const = 0;	 // Draws the game object in the window in his position cell 
@@ -33,7 +34,7 @@ public:
 
 	// Decide the parameters that you should pass to each function	
 	
-	//virtual void Save(ofstream &OutFile) = 0;	// Saves the GameObject parameters to the file
+	virtual void Save(ofstream &OutFile,int type) = 0;	// Saves the GameObject parameters to the file
 	//virtual void Load(ifstream &Infile) = 0;	// Loads and Reads the GameObject parameters from the file
 
 	virtual ~GameObject(); // Virtual destructor
