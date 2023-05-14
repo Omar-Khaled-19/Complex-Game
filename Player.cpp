@@ -38,7 +38,7 @@ void Player::DecrementWallet(int decrementAmount)
 	SetWallet(GetWallet() - decrementAmount);
 }
 
-void Player::ResetPlayer(Grid * pGrid)
+void Player::ResetPlayer(Grid* pGrid)
 {
 	turnCount = 0;
 	wallet = 100;
@@ -64,15 +64,13 @@ int Player::GetStepCount() const
 	return stepCount;
 }
 
-void Player::SetPrison(int p)
+void Player::SetPrison(bool p)
 {
 	Prison = p;
 }
 
-int Player::GetPrison()
+bool Player::GetPrison()
 {
-	if (Prison != 0)
-		Prison--;
 	return Prison;
 }
 
@@ -147,9 +145,11 @@ void Player::Move(Grid* pGrid, int diceNumber)
 
 	// 3- Set the justRolledDiceNum with the passed diceNumber
 
-	CellPosition newCellPos = pCell->GetCellPosition();
 
-	justRolledDiceNum = ((newCellPos.GetCellNum() + diceNumber) <= 99) ? diceNumber : (99 - newCellPos.GetCellNum());
+
+	CellPosition newCellPos = pCell->GetCellPosition();
+	int PlayerCellNumber = newCellPos.GetCellNum();
+	justRolledDiceNum = ((PlayerCellNumber + diceNumber) <= 99) ? diceNumber : (99 - newCellPos.GetCellNum());
 
 	// 4- Get the player current cell position, say "pos", and add to it the diceNumber (update the position)
 	//    Using the appropriate function of CellPosition class to update "pos"
@@ -166,12 +166,15 @@ void Player::Move(Grid* pGrid, int diceNumber)
 	pGrid->UpdatePlayerCell(this, newCellPos);
 
 	// 6- Apply() the game object of the reached cell (if any)
-	GameObject* pGobject = pCell->GetGameObject();
-	if (pGobject)
-		pGobject->Apply(pGrid, this);
 
+	while (pCell->HasGameObject())
+	{
+		GameObject* pGobject = pCell->GetGameObject();
+		pGobject->Apply(pGrid, this);
+	}
 	// 7- Check if the player reached the end cell of the whole game, and if yes, Set end game with true: pGrid->SetEndGame(true)
-	if (newCellPos.GetCellNum() == 99)
+
+	if (pCell->IsEndCell())
 	{
 		pGrid->PrintErrorMessage("You Won! Click to end game.. ");
 		pGrid->SetEndGame(true);
