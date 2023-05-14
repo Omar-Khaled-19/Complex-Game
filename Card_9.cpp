@@ -9,6 +9,10 @@ void Card_9::ReadCardParameters(Grid* pGrid)
 {
 }
 
+void Card_9::transfereCardParameters(Card* pCard)
+{
+}
+
 void Card_9::Apply(Grid* pGrid, Player* pPlayer)
 {
 }
