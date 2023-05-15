@@ -2,7 +2,8 @@
 #include"Card.h"
 class Card_9 : public Card
 {
-
+	int price;
+	int fees;
 
 
 public:
