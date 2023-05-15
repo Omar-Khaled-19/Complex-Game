@@ -17,8 +17,6 @@ public:
 
 	CellPosition GetPosition() const;     // A Getter for position
 
-	int GetObjCellNum() const;            // added by Amr for Card_2
-
 	void UpdateGameObjectCellPosition(CellPosition& pos);
 	// ============ Virtual Functions ============
 
