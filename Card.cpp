@@ -54,10 +54,9 @@ void Card::Save(ofstream& OutFile, int type)
 
 void Card::Load(ifstream& Infile)
 {
-	int x, y;
-		Infile >> x >> y;
-		cardNumber = x; 
-		position = y;
+	int x;
+		Infile >> x ; 
+		position = x;
 }
 
 void Card::transfereCardParameters(Card* pCard)

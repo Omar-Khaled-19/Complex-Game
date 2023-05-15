@@ -75,9 +75,8 @@ void CardOne::Save(ofstream& OutFile, int type)
 
 void CardOne::Load(ifstream& Infile)
 {
-	int x, y,z;
-	Infile >> x >> y>>z;
-	cardNumber = x;
-	position = y;
-	walletAmount = z;
+	int x, y;
+	Infile >> x >> y;
+	position = x;
+	walletAmount = y;
 }
