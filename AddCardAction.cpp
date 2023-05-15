@@ -126,10 +126,9 @@ void AddCardAction::Execute()
 		// B- Make the "pCard" reads its card parameters: ReadCardParameters(), It is virtual and depends on the card type
 		while (true)
 		{
-			if (pCard->GetCardNumber() == 9 && Card_9::added)
-			{
+			if ((pCard->GetCardNumber() == 9) && Card_9::added)
 				break;	
-			}
+			
 			pCard->ReadCardParameters(pGrid); 
 			break;
 		}
