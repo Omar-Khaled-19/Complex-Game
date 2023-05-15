@@ -127,6 +127,8 @@ void AddCardAction::Execute()
 		while (true)
 		{
 			if ((pCard->GetCardNumber() == 9) && Card_9::added)
+				if ((pCard->GetCardNumber() == 10) && Card_10::added)
+					if ((pCard->GetCardNumber() == 11) && Card_11::added)
 				break;	
 			
 			pCard->ReadCardParameters(pGrid); 
