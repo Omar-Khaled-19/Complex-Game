@@ -159,6 +159,20 @@ void Grid::SaveAll(ofstream& OutFile, int type)    // added by shereef
 		}
 }
 
+void Grid::DeleteAll()
+{
+	for (int i = NumVerticalCells - 1; i >= 0; i--)
+	{
+		for (int j = 0; j < NumHorizontalCells; j++)
+		{
+			if (CellList[i][j]->HasGameObject())
+			{
+				RemoveObjectFromCell(CellList[i][j]->GetCellPosition());
+			}
+		}
+	}
+}
+
 
 // ========= Setters and Getters Functions =========
 

@@ -54,6 +54,8 @@ public:
 
 	void SaveAll(ofstream& OutFile, int type); // added by shereef
 
+	void DeleteAll();
+
 	// ========= Setters and Getters Functions =========
 
 	Input * GetInput() const;	// Gets a Pointer to the Input
