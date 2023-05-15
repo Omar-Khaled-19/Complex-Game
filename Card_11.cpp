@@ -59,7 +59,7 @@ void Card_11::Save(ofstream& OutFile, int type)
 	else
 	{
 		OutFile << cardNumber << "      " << position.GetCellNum() << "       " << price << "       " << fees << endl;
-		added = true;
+		
 		saved = true;
 	}
 }
@@ -80,6 +80,7 @@ void Card_11::Load(ifstream& Infile)
 		price = b;
 		fees = c;
 		opened = true;
+		added = true;
 	}
 }
 
