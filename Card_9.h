@@ -2,11 +2,13 @@
 #include"Card.h"
 class Card_9 : public Card
 {
-	int price;
-	int fees;
-
 
 public:
+	static int price;
+	static int fees;
+	static bool added;
+	static bool bought;
+	static int owner;
 	Card_9(const CellPosition& pos);
 
 	virtual void ReadCardParameters(Grid* pGrid);

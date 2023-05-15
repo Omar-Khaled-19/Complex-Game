@@ -54,8 +54,21 @@ bool AddSnakeAction::isValid()
 
 	if (endPos.VCell() <= startPos.VCell() || endPos.HCell() != startPos.HCell() || pGrid->PosHasLadderorSnake(endPos))
 		return false;
-
+	
 	return true;
+}
+
+bool AddSnakeAction::overlaps( Snake& other)  
+{
+	CellPosition* start = & startPos;
+	CellPosition* end = &endPos;
+	CellPosition* endother = &other.GetPosition();
+	CellPosition* startother = &other.GetPosition();
+
+	return
+		start == startother || start == endother ||
+		end == startother || end == endother;
+
 }
 
 void AddSnakeAction::Execute()
@@ -69,6 +82,7 @@ void AddSnakeAction::Execute()
 		pGrid->PrintErrorMessage("InValid Snake! Click to back to game ...");
 		return;
 	}
+	
 
 	Snake* pSnake = new Snake(startPos, endPos);
 

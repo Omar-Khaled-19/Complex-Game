@@ -6,6 +6,7 @@ class Snake : public GameObject
 {
 
 	CellPosition endCellPos;
+	
 
 	static int snakesnum;
 
@@ -19,6 +20,7 @@ public:
 	virtual void Apply(Grid* pGrid, Player* pPlayer);
 
 	CellPosition GetEndPosition() const;
+	CellPosition Snake::GetStartPosition() const;
 
 	virtual void Save(ofstream& OutFile, int type);
 

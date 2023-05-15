@@ -3,7 +3,8 @@
 
 class Card_10 : public Card
 {
-
+	int  price;
+	int  fees;
 
 
 public:

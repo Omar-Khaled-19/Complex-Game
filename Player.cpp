@@ -108,6 +108,11 @@ int Player::GetPoison()
 	return poison;
 }
 
+int Player::GetPlayerNum() const
+{
+	return playerNum;
+}
+
 void Player::SetFire(int f)
 {
 	fire = f;
@@ -120,6 +125,12 @@ int Player::GetFire()
 	return fire;
 }
 
+
+
+void Player::Incrementtowallet(int money) 
+{
+	SetWallet(GetWallet() + money);
+}
 // ====== Drawing Functions ======
 
 void Player::Draw(Output* pOut) const

@@ -51,6 +51,9 @@ public:
 	void SetCard_4(bool c); // Added by Khaled for Card 4
 	bool GetCard_4();
 
+	
+	void Incrementtowallet(int money); //card 9 10 11
+
 	int fire = 0;
 	void SetFire(int f);
 	int GetFire();
@@ -58,6 +61,8 @@ public:
 	int poison = 0;
 	void SetPoison(int p);
 	int GetPoison();
+
+	int GetPlayerNum() const  ;
 
 	// ====== Drawing Functions ======
 

@@ -54,6 +54,8 @@ public:
 
 	void SaveAll(ofstream& OutFile, int type); // added by shereef
 
+	CellPosition* GetBoughtCards();
+
 	// ========= Setters and Getters Functions =========
 
 	Input * GetInput() const;	// Gets a Pointer to the Input
@@ -85,6 +87,8 @@ public:
 	Player* LeastWalletPlayer(Player* p); // Added by Khaled for Card 12
 
 	void SetcurrPlayerNumber(int playerNum);
+
+	void Station(int o , int f , Player* player);
 
 	void SpAttacks();
 

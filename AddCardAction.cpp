@@ -71,6 +71,7 @@ void AddCardAction::Execute()
 	// == Here are some guideline steps (numbered below) to implement this function ==
 
 	// 1- The first line of any Action Execution is to read its parameter first
+	
 	ReadActionParameters();
 	
 	// 2- Switch case on cardNumber data member and create the appropriate card object type
@@ -123,8 +124,15 @@ void AddCardAction::Execute()
 		Grid* pGrid = pManager->GetGrid(); 
 
 		// B- Make the "pCard" reads its card parameters: ReadCardParameters(), It is virtual and depends on the card type
-		pCard->ReadCardParameters(pGrid);
-
+		while (true)
+		{
+			if (pCard->GetCardNumber() == 9 && Card_9::added)
+			{
+				break;	
+			}
+			pCard->ReadCardParameters(pGrid); 
+			break;
+		}
 		// C- Add the card object to the GameObject of its Cell:
 		bool added = pGrid->AddObjectToCell(pCard);
 

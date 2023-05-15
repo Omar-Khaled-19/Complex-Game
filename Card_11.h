@@ -4,7 +4,8 @@
 class Card_11 : public Card
 {
 
-
+	int  price;
+	int  fees;
 
 public:
 	Card_11(const CellPosition& pos);

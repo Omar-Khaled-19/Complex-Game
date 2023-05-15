@@ -5,6 +5,7 @@
 #include "Ladder.h"
 #include "Card.h"
 #include "Player.h"
+#include"CellPosition.h"
 
 Grid::Grid(Input * pIn, Output * pOut) : pIn(pIn), pOut(pOut) // Initializing pIn, pOut
 {
@@ -159,7 +160,6 @@ void Grid::SaveAll(ofstream& OutFile, int type)    // added by shereef
 		}
 }
 
-
 // ========= Setters and Getters Functions =========
 
 
@@ -290,6 +290,14 @@ Player* Grid::LeastWalletPlayer(Player* p)
 void Grid::SetcurrPlayerNumber(int playerNum)
 {
 	currPlayerNumber = playerNum;
+}
+
+void Grid::Station(int o , int f , Player* player)
+{
+	
+		player->DecrementWallet(f);
+		PlayerList[o]->Incrementtowallet(f);
+	
 }
 
 // Bonus Functions
