@@ -189,7 +189,7 @@ void Player::Move(Grid* pGrid, int diceNumber)
 
 	CellPosition newCellPos = pCell->GetCellPosition();
 	int PlayerCellNumber = newCellPos.GetCellNum();
-	justRolledDiceNum = ((PlayerCellNumber + diceNumber) <= 99) ? diceNumber : (99 - newCellPos.GetCellNum());
+	justRolledDiceNum = ((PlayerCellNumber + diceNumber) <= 99) ? diceNumber : (99 - newCellPos.GetCellNum()); // to not exceed cellnum99
 
 	// 4- Get the player current cell position, say "pos", and add to it the diceNumber (update the position)
 	//    Using the appropriate function of CellPosition class to update "pos"
@@ -228,4 +228,5 @@ void Player::AppendPlayerInfo(string& playersInfo) const
 	playersInfo += "P" + to_string(playerNum) + "(";
 	playersInfo += to_string(wallet) + ", ";
 	playersInfo += to_string(turnCount) + ")";
+	playersInfo += "[" + to_string(3 - turnCount) + "]";
 }
