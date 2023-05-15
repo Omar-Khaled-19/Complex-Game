@@ -24,5 +24,7 @@ void Card_6::Apply(Grid* pGrid, Player* pPlayer)
 	pGrid->PrintErrorMessage("Card 6 : Move the player to the cell with cell number: " + to_string(cellNum) );
 
 	pGrid->UpdatePlayerCell(pPlayer, cellNum);
+	if (pGrid->PosHasGameObject(CellPosition(cellNum)))
+		pGrid->PosHasGameObject(CellPosition(cellNum))->Apply(pGrid, pPlayer);
 }
 
