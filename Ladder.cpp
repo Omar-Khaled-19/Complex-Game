@@ -51,6 +51,16 @@ void Ladder::Save(ofstream& OutFile, int type)
 	}
 }
 
+void Ladder::Load(ifstream& Infile)
+{
+	int x, y;
+	Infile >> x >> y;
+	CellPosition X(x), Y(y);
+	position = X;
+
+	endCellPos = Y;
+}
+
 int Ladder::GetLadderNums()
 {
 	return laddernums;
