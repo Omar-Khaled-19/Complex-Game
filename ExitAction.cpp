@@ -10,6 +10,7 @@ void ExitAction::ReadActionParameters()
 
 void ExitAction::Execute()
 {
+	
 }
 
 ExitAction::~ExitAction()

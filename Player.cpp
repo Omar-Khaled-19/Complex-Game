@@ -181,7 +181,10 @@ void Player::Move(Grid* pGrid, int diceNumber)
 		}
 	}
 	if (GetWallet() <= 1)
+	{
+		pGrid->PrintErrorMessage("You can't play untill you recharge your wallet. Click to ontinue..");
 		return;
+	}
 
 	// 3- Set the justRolledDiceNum with the passed diceNumber
 
