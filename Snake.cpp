@@ -21,6 +21,12 @@ void Snake::Apply(Grid* pGrid, Player* pPlayer)
 
     pGrid->UpdatePlayerCell(pPlayer, endCellPos);
 
+    if (pPlayer->GetCell()->HasGameObject())
+    {
+        GameObject* pGobject = pPlayer->GetCell()->GetGameObject();
+        pGobject->Apply(pGrid, pPlayer);
+    }
+
 }
 
 CellPosition Snake::GetEndPosition() const
@@ -30,6 +36,23 @@ CellPosition Snake::GetEndPosition() const
 
 void Snake::Save(ofstream& OutFile, int type)
 {
+    if (OutFile.is_open())
+    {
+
+        OutFile << position.GetCellNum() << "      " << endCellPos.GetCellNum() << endl;
+
+
+    }
+}
+
+void Snake::Load(ifstream& Infile)
+{
+    int x, y;
+    Infile >> x >> y;
+    CellPosition X(x), Y(y);
+    position = X;
+
+    endCellPos = Y;
 }
 
 int Snake::GetSnakesNum()

@@ -98,11 +98,11 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		break;
 
 	case SAVE_GRID:
-		
+		pAct = new SaveGridAction(this);
 		break;
 
 	case OPEN_GRID:
-		
+		pAct = new OpenGridAction(this);
 		break;
 
 	case TO_PLAY_MODE:

@@ -61,3 +61,23 @@ void CardOne::transfereCardParameters(Card* pCard)
 {
 	walletAmount = ((CardOne*)pCard)->walletAmount;
 }
+
+void CardOne::Save(ofstream& OutFile, int type)
+{
+	if (OutFile.is_open())
+	{
+
+		OutFile << cardNumber << "      " << position.GetCellNum() <<"       "<<walletAmount<< endl;
+
+
+	}
+}
+
+void CardOne::Load(ifstream& Infile)
+{
+	int x, y,z;
+	Infile >> x >> y>>z;
+	cardNumber = x;
+	position = y;
+	walletAmount = z;
+}

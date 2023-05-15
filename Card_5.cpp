@@ -6,6 +6,8 @@ Card_5::Card_5(const CellPosition& pos) : Card(pos) // set the cell position of 
 }
 
 
+
+
 void Card_5::Apply(Grid* pGrid, Player* pPlayer)
 {
 	Card::Apply(pGrid, pPlayer);

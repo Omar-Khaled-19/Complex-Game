@@ -73,7 +73,6 @@ void CopyCardAction::Execute()
 			case 12:
 				pCard = new Card_12(CardPosition);
 				break;
-				// A- Add the remaining cases
 		}
 			pCard->transfereCardParameters(card1);
 			pGrid->SetClipboard(pCard);

@@ -1,5 +1,7 @@
 #include "Ladder.h"
 
+#include "PLayer.h"
+
 int Ladder::laddernums = 0;
 
 Ladder::Ladder(const CellPosition& startCellPos, const CellPosition& endCellPos) : GameObject(startCellPos)
@@ -33,6 +35,13 @@ void Ladder::Apply(Grid* pGrid, Player* pPlayer)
 
 	pGrid->UpdatePlayerCell(pPlayer, endCellPos);
 
+	 /// Test
+
+	if (pPlayer->GetCell()->HasGameObject())
+	{
+		GameObject* pGobject = pPlayer->GetCell()->GetGameObject();
+		pGobject->Apply(pGrid, pPlayer);
+	}
 }
 
 CellPosition Ladder::GetEndPosition() const
@@ -49,6 +58,16 @@ void Ladder::Save(ofstream& OutFile, int type)
 
 
 	}
+}
+
+void Ladder::Load(ifstream& Infile)
+{
+	int x, y;
+	Infile >> x >> y;
+	CellPosition X(x), Y(y);
+	position = X;
+
+	endCellPos = Y;
 }
 
 int Ladder::GetLadderNums()

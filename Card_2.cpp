@@ -21,6 +21,7 @@ void Card_2::Apply(Grid* pGrid, Player* pPlayer)
 	pLadder->Apply(pGrid, pPlayer);
 
 
+
 }
 
 Card_2::~Card_2()

@@ -1,5 +1,7 @@
 #pragma once
 #include "GameObject.h"
+#include "Player.h"
+
 class Snake : public GameObject
 {
 
@@ -18,6 +20,8 @@ public:
 	CellPosition GetEndPosition() const;
 
 	virtual void Save(ofstream& OutFile, int type);
+
+	virtual void Load(ifstream& Infile);
 
 	static int GetSnakesNum();
 

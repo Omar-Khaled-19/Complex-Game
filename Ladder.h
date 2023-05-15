@@ -2,6 +2,8 @@
 
 #include "GameObject.h"
 
+#include "Player.h"
+
 class Ladder : public GameObject // inherited from GameObject
 {
 	// Note: the "position" data member inherited from the GameObject class is used as the ladder's "Start Cell Position"
@@ -20,6 +22,8 @@ public:
 	CellPosition GetEndPosition() const; // A getter for the endCellPos data member
 	
 	virtual void Save(ofstream& OutFile, int type); 
+
+	virtual void Load(ifstream& Infile);
 	
 	static int GetLadderNums();
 	
