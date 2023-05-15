@@ -38,18 +38,36 @@ void AddLadderAction::ReadActionParameters()
 	pOut->ClearStatusBar();
 }
 
+bool AddLadderAction::isValid()
+{
+	Grid* pGrid = pManager->GetGrid();
+
+	if(endPos.VCell()>=startPos.VCell() || endPos.HCell() != startPos.HCell() || pGrid->PosHasLadderorSnake(endPos))
+	return false;
+	
+	return true;
+}
+
 
 // Execute the action
 void AddLadderAction::Execute() 
 {
+
 	// The first line of any Action Execution is to read its parameter first 
 	// and hence initializes its data members
 	ReadActionParameters();
 
+	Grid* pGrid = pManager->GetGrid();           // We get a pointer to the Grid from the ApplicationManager
+
+	if (!isValid())
+	{
+		pGrid->PrintErrorMessage("InValid Ladder! Click to back to game ...");
+		return;
+	}
+
 	// Create a Ladder object with the parameters read from the user
 	Ladder * pLadder = new Ladder(startPos, endPos);
 
-	Grid * pGrid = pManager->GetGrid(); // We get a pointer to the Grid from the ApplicationManager
 
 	// Add the card object to the GameObject of its Cell:
 	bool added = pGrid->AddObjectToCell(pLadder);

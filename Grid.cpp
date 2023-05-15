@@ -210,6 +210,15 @@ GameObject* Grid::PosHasGameObject(CellPosition& pos)                           
 }
 
 
+bool Grid::PosHasLadderorSnake(CellPosition& pos)
+{
+	if (CellList[pos.VCell()][pos.HCell()]->HasLadder() || CellList[pos.VCell()][pos.HCell()]->HasSnake())
+		return true;
+
+	   return false;
+}
+
+
 // ========= Other Getters =========
 
 
