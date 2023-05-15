@@ -10,6 +10,7 @@ class Snake : public GameObject
 public:
 
 	Snake(const CellPosition& startCellPos, const CellPosition& endCellPos);
+	Snake();
 
 	virtual void Draw(Output* pOut) const;
 

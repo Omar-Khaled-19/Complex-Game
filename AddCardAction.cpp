@@ -130,7 +130,7 @@ void AddCardAction::Execute()
 
 
 		// D- if the GameObject cannot be added in the Cell, Print the appropriate error message on statusbar
-		if (added)
+		if (!added)
 		{
 			// Print an appropriate message
 			pGrid->PrintErrorMessage("Error: Card can't be added ! Click to continue ...");

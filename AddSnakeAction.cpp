@@ -31,7 +31,14 @@ void AddSnakeAction::ReadActionParameters()
 
 
 	///TODO: Make the needed validations on the read parameters
+	if (startPos.VCell() == 0 )
 	
+		pGrid->PrintErrorMessage("Error: Snake can't be put in the first row ! Click to continue ...");
+	
+	
+
+
+
 
 
 
