@@ -7,13 +7,21 @@ OpenGridAction::OpenGridAction(ApplicationManager* pApp):Action(pApp)
 
 void OpenGridAction::ReadActionParameters()
 {
+	Grid* pGrid = pManager->GetGrid();
+	pGrid->PrintErrorMessage("type the filename you want to open and its extension ");
+	Output* pOut = pGrid->GetOutput();
+	Input* pIn = pGrid->GetInput();
+
+	filename =pIn->GetSrting(pOut);
+
 }
 
 void OpenGridAction::Execute()
 {
+	ReadActionParameters();
 	Grid* pGrid = pManager->GetGrid();
 	ifstream Infile;
-	Infile.open("save.txt");
+	Infile.open(filename);
 	int x; 
 	Infile >> x;
 	for(int i = 0;  i< x; i++)
@@ -80,4 +88,5 @@ void OpenGridAction::Execute()
 		pGrid->AddObjectToCell(pCard);
 	}
 	Infile.close();
+	pGrid->PrintErrorMessage("opened " + filename + "  click to continue");
 }

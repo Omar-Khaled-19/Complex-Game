@@ -19,6 +19,7 @@
 #include "Card_12.h"
 class OpenGridAction :public Action
 {
+	string filename;
 public :
 	OpenGridAction(ApplicationManager* pApp);
 
