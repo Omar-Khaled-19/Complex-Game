@@ -21,7 +21,7 @@ void RollDiceAction::Execute()
 
 	Grid* pGrid = pManager->GetGrid();
 	Output* pOut = pGrid->GetOutput();
-
+	pOut->ClearStatusBar();
 	// == Here are some guideline steps (numbered below) to implement this function ==
 
 	// 1- Check if the Game is ended (Use the GetEndGame() function of pGrid), if yes, make the appropriate action
