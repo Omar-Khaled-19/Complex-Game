@@ -11,6 +11,12 @@ void Card_6::ReadCardParameters(Grid* pGrid)
 	
 	cellNum = pGrid->GetInput()->GetInteger(pGrid->GetOutput());
 	pGrid->GetOutput()->ClearStatusBar();
+
+	while (cellNum == position.GetCellNum())
+	{
+		pGrid->PrintErrorMessage("Invalid cell please try again");
+		cellNum = pGrid->GetInput()->GetInteger(pGrid->GetOutput());
+	}
 }
 
 void Card_6::transfereCardParameters(Card* pCard)
