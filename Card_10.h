@@ -3,8 +3,11 @@
 
 class Card_10 : public Card
 {
-	int  price;
-	int  fees;
+	static int price;
+	static int fees;
+	static bool added;
+	static bool bought;
+	static int owner;
 
 
 public:
