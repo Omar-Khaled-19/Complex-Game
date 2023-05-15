@@ -63,7 +63,6 @@ void RollDiceAction::Execute()
 	
 	if (pPlayer->GetPoison())
 	{
-		pGrid->PrintErrorMessage("You got: " + to_string(diceNumber));
 		diceNumber--;
 	}
 

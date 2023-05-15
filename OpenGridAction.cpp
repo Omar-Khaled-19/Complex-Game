@@ -8,7 +8,7 @@ OpenGridAction::OpenGridAction(ApplicationManager* pApp):Action(pApp)
 void OpenGridAction::ReadActionParameters()
 {
 	Grid* pGrid = pManager->GetGrid();
-	pGrid->PrintErrorMessage("type the filename you want to open and its extension ");
+	pGrid->PrintErrorMessage("type the filename you want to open ");
 	Output* pOut = pGrid->GetOutput();
 	Input* pIn = pGrid->GetInput();
 
@@ -21,7 +21,7 @@ void OpenGridAction::Execute()
 	ReadActionParameters();
 	Grid* pGrid = pManager->GetGrid();
 	ifstream Infile;
-	Infile.open(filename);
+	Infile.open(filename+".txt");
 	if (Infile.is_open()) 
 	{
 

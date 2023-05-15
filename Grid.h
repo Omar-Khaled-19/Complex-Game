@@ -54,7 +54,7 @@ public:
 
 	void SaveAll(ofstream& OutFile, int type); // added by shereef
 
-	CellPosition* GetBoughtCards();
+	void DeleteAll();
 
 	// ========= Setters and Getters Functions =========
 
@@ -75,7 +75,7 @@ public:
 
 	GameObject* PosHasGameObject(CellPosition& pos);            //added by shereef
 
-	bool PosHasLadderorSnake(CellPosition& pos);   //Added by Amr for addLadder and addSnake validation
+	bool PosHasLadderorSnake(CellPosition& pos);   //Added for addLadder and addSnake validation
 
 	// ========= Other Getters =========
 	

@@ -110,6 +110,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		break;
 
 	case EXIT:
+		pAct = new ExitAction(this);
 		break;
 
 
