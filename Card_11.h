@@ -4,13 +4,14 @@
 class Card_11 : public Card
 {
 
+	
+
+public:
 	static int price;
 	static int fees;
 	static bool added;
 	static bool bought;
 	static int owner;
-
-public:
 	Card_11(const CellPosition& pos);
 
 	virtual void ReadCardParameters(Grid* pGrid);

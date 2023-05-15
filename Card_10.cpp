@@ -1,4 +1,5 @@
-#include"Card_10.h"
+#include "Card_10.h"
+#include"Player.h"
 
 Card_10::Card_10(const CellPosition& pos) : Card(pos)
 {
