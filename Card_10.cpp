@@ -10,6 +10,8 @@ int Card_10::price = 0;
 bool Card_10::added = false;
 bool Card_10::bought = false;
 int Card_10::owner = 5;
+bool Card_10::saved = false;
+bool Card_10::opened = false;
 
 void Card_10::ReadCardParameters(Grid* pGrid)
 {
@@ -45,6 +47,39 @@ void Card_10::Apply(Grid* pGrid, Player* pPlayer)
 	{
 		pPlayer->SetWallet(pPlayer->GetWallet() - price);
 		owner = pPlayer->GetPlayerNum();
+	}
+}
+
+void Card_10::Save(ofstream& OutFile, int type)
+{
+	if (saved)
+	{
+		OutFile << cardNumber << "      " << position.GetCellNum() << endl;
+	}
+	else
+	{
+		OutFile << cardNumber << "      " << position.GetCellNum() << "       " << price << "       " << fees << endl;
+		added = true;
+		saved = true;
+	}
+}
+
+void Card_10::Load(ifstream& Infile)
+{
+	if (opened)
+	{
+		int x;
+		Infile >> x;
+		position = x;
+	}
+	else
+	{
+		int a, b, c;
+		Infile >> a >> b >> c;
+		position = a;
+		price = b;
+		fees = c;
+		opened = true;
 	}
 }
 

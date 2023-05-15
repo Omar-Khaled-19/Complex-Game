@@ -12,6 +12,8 @@ public:
 	static bool added;
 	static bool bought;
 	static int owner;
+	static bool saved;
+	static bool opened;
 	Card_11(const CellPosition& pos);
 
 	virtual void ReadCardParameters(Grid* pGrid);
@@ -19,6 +21,10 @@ public:
 	void transfereCardParameters(Card* pCard);
 
 	virtual void Apply(Grid* pGrid, Player* pPlayer);
+
+	virtual void Save(ofstream& OutFile, int type);
+
+	virtual void Load(ifstream& Infile);
 
 	virtual ~Card_11();
 };

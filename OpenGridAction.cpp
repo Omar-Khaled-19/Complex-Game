@@ -92,6 +92,9 @@ void OpenGridAction::Execute()
 			pCard->Load(Infile);
 			pGrid->AddObjectToCell(pCard);
 		}
+		Card_9::opened = false;
+		Card_10::opened = false;
+		Card_11::opened = false;
 		Infile.close();
 		pGrid->PrintErrorMessage("opened " + filename + "  click to continue");
 	}
