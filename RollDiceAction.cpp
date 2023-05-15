@@ -60,15 +60,15 @@ void RollDiceAction::Execute()
 		return;
 	}
 	
-	if (pGrid->GetPoison())
+	if (pPlayer->GetPoison())
 	{
 		pGrid->PrintErrorMessage("You got: " + to_string(diceNumber));
 		diceNumber--;
 	}
 
-	if (pGrid->GetFire())
+	if (pPlayer->GetFire())
 	{
-		pGrid->Fire(pGrid->GetCurrentPlayer());
+		pGrid->Fire(pPlayer);
 	}
 
 	pPlayer->Move(pGrid, diceNumber);

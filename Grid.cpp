@@ -285,21 +285,41 @@ void Grid::SetcurrPlayerNumber(int playerNum)
 
 // Bonus Functions
 
+void Grid::SpAttacks()
+{
+	PrintErrorMessage("Choose which special attak to use 1:I , 2:F , 3:P, 4:L ");
+	int c = pIn->GetInteger(pOut);
+	if (c == 1)
+	{
+		PrintErrorMessage("Choose a player to ice him");
+		int i = pIn->GetInteger(pOut);
+		Ice(i);
+		return;
+	}
+	else if (c == 2)
+	{
+		PrintErrorMessage("Choose a player to fire him");
+		int i = pIn->GetInteger(pOut);
+		PlayerList[i]->SetFire(4);
+		return;
+	}
+	else if (c == 3)
+	{
+		PrintErrorMessage("Choose a player to poison him");
+		int i = pIn->GetInteger(pOut);
+		PlayerList[i]->SetPoison(6);
+		return;
+	}
+	else
+	{
+		Lighting();
+		return;
+	}
+}
+
 void Grid::Ice(int i)
 {
 	PlayerList[i]->SetCard_4(true);
-}
-
-void Grid::SetFire(int f)
-{
-	fire = f;
-}
-
-int Grid::GetFire()
-{
-	if (fire != 0)
-		fire--;
-	return fire;
 }
 
 void Grid::Fire(Player *pPlayer)
@@ -307,21 +327,14 @@ void Grid::Fire(Player *pPlayer)
 	pPlayer->SetWallet(pPlayer->GetWallet() - 20);
 }
 
-void Grid::SetPoison(int p)
+void Grid::Poison(int i)
 {
-	poison = p;
-}
-
-int Grid::GetPoison()
-{
-	if (poison != 0)
-		poison--;
-	return poison;
+	PlayerList[i]->SetPoison(6);
 }
 
 void Grid::Lighting()
 {
-	for (int i = 0; i < MaxPlayerCount - 1; i++)
+	for (int i = 0; i < MaxPlayerCount; i++)
 	{
 		if (PlayerList[i] == GetCurrentPlayer())
 			continue;

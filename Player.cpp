@@ -96,6 +96,30 @@ bool Player::GetCard_4()
 	return Card_4;
 }
 
+void Player::SetPoison(int p)
+{
+	poison = p;
+}
+
+int Player::GetPoison()
+{
+	if (poison != 0)
+		poison--;
+	return poison;
+}
+
+void Player::SetFire(int f)
+{
+	fire = f;
+}
+
+int Player::GetFire()
+{
+	if (fire != 0)
+		fire--;
+	return fire;
+}
+
 // ====== Drawing Functions ======
 
 void Player::Draw(Output* pOut) const
@@ -152,34 +176,8 @@ void Player::Move(Grid* pGrid, int diceNumber)
 		}
 		else
 		{
-			pGrid->PrintErrorMessage("Choose which special attak to use 1:I , 2:F , 3:P, 4:L ");
-			int c = pIn->GetInteger(pOut);
-			if (c == 1)
-			{
-				pGrid->PrintErrorMessage("Choose a player to ice him");
-				int i = pIn->GetInteger(pOut);
-				pGrid->Ice(i);
-				return;
-			}
-			else if (c == 2)
-			{
-				pGrid->PrintErrorMessage("Choose a player to fire him");
-				int i = pIn->GetInteger(pOut);
-				pGrid->SetFire(4);
-				return;
-			}
-			else if (c == 3)
-			{
-				pGrid->PrintErrorMessage("Choose a player to poison him");
-				int i = pIn->GetInteger(pOut);
-				pGrid->SetPoison(6);
-				return;
-			}
-			else
-			{
-				pGrid->Lighting();
-				return;
-			}
+			pGrid->SpAttacks();
+			return;
 		}
 	}
 	if (GetWallet() <= 1)

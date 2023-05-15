@@ -85,16 +85,13 @@ public:
 
 	void SetcurrPlayerNumber(int playerNum);
 
-	int poison = 0;
-	void SetPoison(int p);
-	int GetPoison();
+	void SpAttacks();
 
 	void Ice(int i);
 	
-	int fire = 0;
-	void SetFire(int f);
-	int GetFire();
 	void Fire(Player *pPlayer);
+
+	void Poison(int i);
 
 	void Lighting();
 
