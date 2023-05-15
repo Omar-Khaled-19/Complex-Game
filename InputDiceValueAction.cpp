@@ -21,7 +21,7 @@ void InputDiceValueAction::ReadActionParameters()
 	   DiceValue = pIn->GetInteger(pOut);
 	  }   while (DiceValue < 0 || DiceValue>6);
 
-
+	  pOut->ClearStatusBar();
 }
 
 void InputDiceValueAction::Execute()
