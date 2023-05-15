@@ -15,8 +15,13 @@ void NewGameAction::ReadActionParameters()
 void NewGameAction::Execute()
 {
 	Grid* pGrid = pManager->GetGrid();
+	Output* pOut = pGrid->GetOutput();
+	Input* pIn = pGrid->GetInput();
 
-	pGrid->PrintErrorMessage("Creating New Game. Click to start.. ");
+	pOut->PrintMessage("Do You want to start a new game? Enter 1 for Yes or any other key for No. ");
+
+	if (pIn->GetSrting(pOut) != "1")
+		return;
 
 	for (int i = 0; i < 4; i++)
 	 {
