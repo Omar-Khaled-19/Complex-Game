@@ -1,5 +1,6 @@
 #pragma once
 #include "Action.h"
+#include"Grid.h"
 class ExitAction :
 	public Action
 {

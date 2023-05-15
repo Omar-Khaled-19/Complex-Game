@@ -10,6 +10,8 @@ void ExitAction::ReadActionParameters()
 
 void ExitAction::Execute()
 {
+	Grid* pGrid = pManager->GetGrid();
+	pGrid->DeleteAll();
 }
 
 ExitAction::~ExitAction()
