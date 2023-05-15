@@ -15,10 +15,8 @@ void NewGameAction::ReadActionParameters()
 void NewGameAction::Execute()
 {
 	Grid* pGrid = pManager->GetGrid();
-	Output* pOut = pGrid->GetOutput();
-	Input* pIn = pGrid->GetInput();
 
-	pGrid->PrintErrorMessage("Creating New Game.. ");
+	pGrid->PrintErrorMessage("Creating New Game. Click to start.. ");
 
 	for (int i = 0; i < 4; i++)
 	 {
