@@ -4,7 +4,7 @@
 class SaveGridAction :
     public Action
 {
-
+	string filename;
 public:
 	SaveGridAction(ApplicationManager* pApp);
 

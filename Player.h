@@ -51,6 +51,13 @@ public:
 	void SetCard_4(bool c); // Added by Khaled for Card 4
 	bool GetCard_4();
 
+	int fire = 0;
+	void SetFire(int f);
+	int GetFire();
+
+	int poison = 0;
+	void SetPoison(int p);
+	int GetPoison();
 
 	// ====== Drawing Functions ======
 

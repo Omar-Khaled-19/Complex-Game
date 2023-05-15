@@ -11,6 +11,12 @@ void Card_6::ReadCardParameters(Grid* pGrid)
 	
 	cellNum = pGrid->GetInput()->GetInteger(pGrid->GetOutput());
 	pGrid->GetOutput()->ClearStatusBar();
+
+	while (cellNum == position.GetCellNum())
+	{
+		pGrid->PrintErrorMessage("Invalid cell please try again");
+		cellNum = pGrid->GetInput()->GetInteger(pGrid->GetOutput());
+	}
 }
 
 void Card_6::transfereCardParameters(Card* pCard)
@@ -31,11 +37,11 @@ void Card_6::Save(ofstream& OutFile, int type)
 
 void Card_6::Load(ifstream& Infile)
 {
-	int x, y, z;
-	Infile >> x >> y >> z;
-	cardNumber = x;
-	position = y;
-	cellNum = z;
+	int x, y;
+	Infile >> x >> y ;
+
+	position = x;
+	cellNum = y;
 }
 
 void Card_6::Apply(Grid* pGrid, Player* pPlayer)
@@ -44,5 +50,7 @@ void Card_6::Apply(Grid* pGrid, Player* pPlayer)
 	pGrid->PrintErrorMessage("Card 6 : Move the player to the cell with cell number: " + to_string(cellNum) );
 
 	pGrid->UpdatePlayerCell(pPlayer, cellNum);
+	if (pGrid->PosHasGameObject(CellPosition(cellNum)))
+		pGrid->PosHasGameObject(CellPosition(cellNum))->Apply(pGrid, pPlayer);
 }
 

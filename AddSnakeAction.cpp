@@ -48,26 +48,39 @@ void AddSnakeAction::ReadActionParameters()
 	pOut->ClearStatusBar();
 }
 
+bool AddSnakeAction::isValid()
+{
+	Grid* pGrid = pManager->GetGrid();
+
+	if (endPos.VCell() <= startPos.VCell() || endPos.HCell() != startPos.HCell() || pGrid->PosHasLadderorSnake(endPos))
+		return false;
+
+	return true;
+}
+
 void AddSnakeAction::Execute()
 {
-	// The first line of any Action Execution is to read its parameter first 
-	// and hence initializes its data members
 	ReadActionParameters();
 
-	// Create a snake object with the parameters read from the user
+	Grid* pGrid = pManager->GetGrid();           
+
+	if (!isValid())
+	{
+		pGrid->PrintErrorMessage("InValid Snake! Click to back to game ...");
+		return;
+	}
+
 	Snake* pSnake = new Snake(startPos, endPos);
 
-	Grid* pGrid = pManager->GetGrid(); // We get a pointer to the Grid from the ApplicationManager
-
-	// Add the card object to the GameObject of its Cell:
 	bool added = pGrid->AddObjectToCell(pSnake);
 
-	// if the GameObject cannot be added
 	if (!added)
 	{
-		// Print an appropriate message
+		
 		pGrid->PrintErrorMessage("Error: Cell already has an object ! Click to continue ...");
 	}
-	// Here, the snake is created and added to the GameObject of its Cell, so we finished executing the AddSnakeAction
+	
 
 }
+
+

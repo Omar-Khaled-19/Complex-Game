@@ -94,7 +94,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		break;
 
 	case DELETE_GAME_OBJECT:
-		
+		pAct = new DeleteGameObjectAction(this);
 		break;
 
 	case SAVE_GRID:
@@ -106,7 +106,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		break;
 
 	case TO_PLAY_MODE:
-		pOut->CreatePlayModeToolBar(); // temporary till you made its action class (CHANGE THIS LATTER)
+		pAct = new SwitchToPlayModeAction(this); // temporary till you made its action class (CHANGE THIS LATTER)
 		break;
 
 	case EXIT:

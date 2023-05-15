@@ -21,6 +21,12 @@ void Snake::Apply(Grid* pGrid, Player* pPlayer)
 
     pGrid->UpdatePlayerCell(pPlayer, endCellPos);
 
+    if (pPlayer->GetCell()->HasGameObject())
+    {
+        GameObject* pGobject = pPlayer->GetCell()->GetGameObject();
+        pGobject->Apply(pGrid, pPlayer);
+    }
+
 }
 
 CellPosition Snake::GetEndPosition() const

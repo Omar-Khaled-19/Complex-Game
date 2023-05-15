@@ -12,6 +12,8 @@ public:
 
 	virtual void Execute(); // Creates a new snake Object then Sets this  object to the GameObject Pointer of its Cell
 
+	bool isValid();
+
 	virtual ~AddSnakeAction();       
 
 };

@@ -40,6 +40,7 @@ void RollDiceAction::Execute()
 	int diceNumber = 1 + rand() % 6; // from 1 to 6 --> should change seed
 
 	// 3- Get the "current" player from pGrid
+	pOut->PrintMessage("You got: " + to_string(diceNumber));
 
 	Player* pPlayer = pGrid->GetCurrentPlayer();
 
@@ -60,15 +61,15 @@ void RollDiceAction::Execute()
 		return;
 	}
 	
-	if (pGrid->GetPoison())
+	if (pPlayer->GetPoison())
 	{
 		pGrid->PrintErrorMessage("You got: " + to_string(diceNumber));
 		diceNumber--;
 	}
 
-	if (pGrid->GetFire())
+	if (pPlayer->GetFire())
 	{
-		pGrid->Fire(pGrid->GetCurrentPlayer());
+		pGrid->Fire(pPlayer);
 	}
 
 	pPlayer->Move(pGrid, diceNumber);
