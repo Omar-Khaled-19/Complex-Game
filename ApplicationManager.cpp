@@ -102,7 +102,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		break;
 
 	case OPEN_GRID:
-		
+		pAct = new OpenGridAction(this);
 		break;
 
 	case TO_PLAY_MODE:

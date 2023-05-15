@@ -15,6 +15,8 @@ public:
 
 	virtual void Save(ofstream& OutFile, int type);
 
+	virtual void Load(ifstream& Infile);
+
 	virtual void Apply(Grid* pGrid, Player* pPlayer);
 };
 

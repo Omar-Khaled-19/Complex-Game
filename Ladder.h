@@ -20,6 +20,8 @@ public:
 	CellPosition GetEndPosition() const; // A getter for the endCellPos data member
 	
 	virtual void Save(ofstream& OutFile, int type); 
+
+	virtual void Load(ifstream& Infile);
 	
 	static int GetLadderNums();
 	

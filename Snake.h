@@ -19,6 +19,8 @@ public:
 
 	virtual void Save(ofstream& OutFile, int type);
 
+	virtual void Load(ifstream& Infile);
+
 	static int GetSnakesNum();
 
 	virtual ~Snake();

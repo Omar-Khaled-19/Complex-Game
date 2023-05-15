@@ -39,6 +39,16 @@ void Snake::Save(ofstream& OutFile, int type)
     }
 }
 
+void Snake::Load(ifstream& Infile)
+{
+    int x, y;
+    Infile >> x >> y;
+    CellPosition X(x), Y(y);
+    position = X;
+
+    endCellPos = Y;
+}
+
 int Snake::GetSnakesNum()
 {
     return snakesnum;

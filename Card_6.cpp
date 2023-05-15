@@ -29,6 +29,15 @@ void Card_6::Save(ofstream& OutFile, int type)
 	}
 }
 
+void Card_6::Load(ifstream& Infile)
+{
+	int x, y, z;
+	Infile >> x >> y >> z;
+	cardNumber = x;
+	position = y;
+	cellNum = z;
+}
+
 void Card_6::Apply(Grid* pGrid, Player* pPlayer)
 {
 	Card::Apply(pGrid, pPlayer);
