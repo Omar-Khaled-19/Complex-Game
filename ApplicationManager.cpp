@@ -94,7 +94,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		break;
 
 	case DELETE_GAME_OBJECT:
-		
+		pAct = new DeleteGameObjectAction(this);
 		break;
 
 	case SAVE_GRID:
