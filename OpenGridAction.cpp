@@ -25,7 +25,7 @@ void OpenGridAction::Execute()
 	if (Infile.is_open()) 
 	{
 
-
+		pGrid->DeleteAll();
 		int x;
 
 		Infile >> x;
