@@ -5,6 +5,11 @@ Card_11::Card_11(const CellPosition& pos) : Card(pos)
 {
 	cardNumber = 11;
 }
+int Card_11::fees = 0;
+int Card_11::price = 0;
+bool Card_11::added = false;
+bool Card_11::bought = false;
+int Card_11::owner = 5;
 
 void Card_11::ReadCardParameters(Grid* pGrid)
 {
