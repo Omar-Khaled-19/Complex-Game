@@ -38,7 +38,38 @@ void InputDiceValueAction::Execute()
 
 	Player* pPlayer = pGrid->GetCurrentPlayer();
 
+	if (pPlayer->GetPrison())
+	{
+		pGrid->PrintErrorMessage("Sorry you can't play ");
+		pGrid->AdvanceCurrentPlayer();
+		return;
+	}
+
+	if (pPlayer->GetCard_4())
+	{
+		pGrid->PrintErrorMessage("Sorry you can't play ");
+		pPlayer->SetCard_4(false);
+		pGrid->AdvanceCurrentPlayer();
+		return;
+	}
+
+	if (pPlayer->GetPoison())
+	{
+		DiceValue--;
+	}
+
+	if (pPlayer->GetFire())
+	{
+		pGrid->Fire(pPlayer);
+	}
+
 	pPlayer->Move(pGrid, DiceValue);
+
+	if (pPlayer->GetCard_3())
+	{
+		pPlayer->SetCard_3(false);
+		Execute();
+	}
 
 	pGrid->AdvanceCurrentPlayer();
 }
