@@ -84,9 +84,13 @@ public:
 
 	Player * GetNearestPlayer(Player * p); // Added by Khaled for Card 7
 
-	Player* LeastWalletPlayer(Player* p); // Added by Khaled for Card 12
+	int LeastWalletPlayer(Player* p); // Added by Khaled for Card 12
 
 	void SetcurrPlayerNumber(int playerNum);
+
+	int HighestFees(Player* player);
+
+	void MoveOwnership(Player *pPlayer,int c);
 
 	void Station(int o , int f , Player* player);
 

@@ -6,6 +6,10 @@
 #include "Card.h"
 #include "Player.h"
 #include"CellPosition.h"
+#include "Card_9.h"
+#include "Card_10.h"
+#include "Card_11.h"
+
 
 Grid::Grid(Input * pIn, Output * pOut) : pIn(pIn), pOut(pOut) // Initializing pIn, pOut
 {
@@ -287,24 +291,101 @@ Player* Grid::GetNearestPlayer(Player* p)
 	return PlayerList[z];
 }
 
-Player* Grid::LeastWalletPlayer(Player* p)
+int Grid::LeastWalletPlayer(Player* p)
 {
-	int z;
-	int min = INFINITY;
+	int z = 5;
+	int min = 99999;
 	for (int i = 0; i < MaxPlayerCount; i++)
 	{
 		if (p == PlayerList[i])
 			continue;
 
 		if (PlayerList[i]->GetWallet() < min)
+		{
+			min = PlayerList[i]->GetWallet();
 			z = i;
+		}
 	}
-	return PlayerList[z];
+	return z;
 }
 
 void Grid::SetcurrPlayerNumber(int playerNum)
 {
 	currPlayerNumber = playerNum;
+}
+
+int Grid::HighestFees(Player* pPlayer)
+{
+	int Max = 0;
+	
+	if(pPlayer->GetPlayerNum() == Card_9::owner && pPlayer->GetPlayerNum() == Card_10::owner && pPlayer->GetPlayerNum() == Card_11::owner)
+		if ((Card_9::fees > Card_10::fees) && (Card_9::fees > Card_11::fees))
+		{
+			Max = 9;
+			return Max;
+		}
+		else if ((Card_10::fees > Card_9::fees) && (Card_10::fees > Card_11::fees))
+		{
+			Max = 10;
+			return Max;
+		}
+		else
+		{
+			Max = 11;
+			return Max;
+		}
+	
+	if (pPlayer->GetPlayerNum() == Card_9::owner && pPlayer->GetPlayerNum() == Card_10::owner)
+		if ((Card_9::fees > Card_10::fees))
+		{
+			Max = 9;
+			return Max;
+		}
+		else
+		{
+			Max = 10;
+			return Max;
+		}
+
+	if (pPlayer->GetPlayerNum() == Card_10::owner && pPlayer->GetPlayerNum() == Card_11::owner)
+		if ((Card_11::fees > Card_10::fees))
+		{
+			Max = 11;
+			return Max;
+		}
+		else
+		{
+			Max = 10;
+			return Max;
+		}
+	
+	if (pPlayer->GetPlayerNum() == Card_9::owner)
+	{
+		Max = 9;
+		return Max;
+	}
+	
+	if (pPlayer->GetPlayerNum() == Card_10::owner)
+	{
+		Max = 10;
+		return Max;
+	}
+	
+	if (pPlayer->GetPlayerNum() == Card_11::owner)
+		Max = 9;
+	return Max;
+}
+
+void Grid::MoveOwnership(Player *pPlayer, int c)
+{
+	if(c == 9)
+		Card_9::owner = LeastWalletPlayer(pPlayer);
+	
+	if (c == 10)
+		Card_9::owner = LeastWalletPlayer(pPlayer);
+	
+	if (c == 11)
+		Card_9::owner = LeastWalletPlayer(pPlayer);
 }
 
 void Grid::Station(int o , int f , Player* player)
