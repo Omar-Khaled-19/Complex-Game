@@ -52,7 +52,7 @@ bool AddSnakeAction::isValid()
 {
 	Grid* pGrid = pManager->GetGrid();
 
-	if (endPos.VCell() <= startPos.VCell() || endPos.HCell() != startPos.HCell() || pGrid->PosHasLadderorSnake(endPos))
+	if (endPos.VCell() <= startPos.VCell() || endPos.HCell() != startPos.HCell() || pGrid->PosHasLadderorSnake(endPos) || startPos.GetCellNum()==99 || endPos.GetCellNum()==1)
 		return false;
 	
 	return true;

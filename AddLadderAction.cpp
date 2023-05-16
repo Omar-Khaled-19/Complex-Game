@@ -44,7 +44,7 @@ bool AddLadderAction::isValid()
 {
 	Grid* pGrid = pManager->GetGrid();
 
-	if(endPos.VCell()>=startPos.VCell() || endPos.HCell() != startPos.HCell() || pGrid->PosHasLadderorSnake(endPos))
+	if(endPos.VCell()>=startPos.VCell() || endPos.HCell() != startPos.HCell() || pGrid->PosHasLadderorSnake(endPos) || startPos.GetCellNum()==1 || endPos.GetCellNum()==99)
 	return false;
 	
 	return true;
