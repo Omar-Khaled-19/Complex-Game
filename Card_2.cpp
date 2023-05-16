@@ -11,7 +11,8 @@ void Card_2::Apply(Grid* pGrid, Player* pPlayer)
 	Card::Apply(pGrid, pPlayer);
 	pGrid->PrintErrorMessage("Card 2 : Move to next ladder if exist. ");
 
-	Ladder* pLadder = pGrid->GetNextLadder(position);
+	Ladder* pLadder = NULL;
+	pLadder = pGrid->GetNextLadder(position);
 
 	if (!pLadder)
 		return;
