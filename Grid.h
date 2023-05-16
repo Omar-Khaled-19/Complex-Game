@@ -14,6 +14,7 @@ class GameObject;
 class Ladder;
 class Card;
 class Player;
+class Snake;
 
 class Grid
 {
@@ -55,6 +56,14 @@ public:
 	void SaveAll(ofstream& OutFile, int type); // added by shereef
 
 	void DeleteAll();
+
+	void SetOccuLaddercells(Ladder* ladder);
+
+	void SetOccuSnakecells(Snake* snake );
+
+	bool IsOcuppiedLadder(Ladder* ladder);
+
+	bool IsOcuppiedSnake(Snake* snake);
 
 	// ========= Setters and Getters Functions =========
 

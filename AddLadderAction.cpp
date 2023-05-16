@@ -1,3 +1,4 @@
+#pragma once
 #include "AddLadderAction.h"
 
 #include "Input.h"
@@ -82,16 +83,16 @@ void AddLadderAction::Execute()
 	Ladder * pLadder = new Ladder(startPos, endPos);
 	
 
-	if (!isValid())
+	if (!isValid()||pGrid->IsOcuppiedLadder(pLadder))
 	{
 		pGrid->PrintErrorMessage("InValid Ladder! Click to back to game ...");
+		delete pLadder;
 		return;
 	}
 
 	/*Ladders [LaddersNum] = pLadder;
 	LaddersNum++;*/
 
-	
 	// Add the card object to the GameObject of its Cell:
 	bool added = pGrid->AddObjectToCell(pLadder);
 
@@ -102,5 +103,5 @@ void AddLadderAction::Execute()
 		pGrid->PrintErrorMessage("Error: Cell already has an object ! Click to continue ...");
 	}
 	// Here, the ladder is created and added to the GameObject of its Cell, so we finished executing the AddLadderAction
-
+	pGrid->SetOccuLaddercells(pLadder);
 }

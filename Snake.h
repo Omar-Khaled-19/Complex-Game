@@ -13,17 +13,13 @@ class Snake : public GameObject
 public:
 
 	Snake(const CellPosition& startCellPos, const CellPosition& endCellPos);
-	Snake();
 
 	virtual void Draw(Output* pOut) const;
 
 	virtual void Apply(Grid* pGrid, Player* pPlayer);
 
 	CellPosition GetEndPosition() const;
-	CellPosition Snake::GetStartPosition() const;
 
-	int GetSnakeEndPositionInt() const;
-	int GetSnakeStartPositionInt() const;
 
 	virtual void Save(ofstream& OutFile, int type);
 

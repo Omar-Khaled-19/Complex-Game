@@ -78,14 +78,16 @@ void AddSnakeAction::Execute()
 	Grid* pGrid = pManager->GetGrid();           
 	CellPosition start;
 	CellPosition end;
-	if (!isValid())
+	Snake* pSnake = new Snake(startPos, endPos);
+	if (!isValid()||pGrid->IsOcuppiedSnake(pSnake))
 	{
 		pGrid->PrintErrorMessage("InValid Snake! Click to back to game ...");
+		delete pSnake;
 		return;
 	}
 	
 
-	Snake* pSnake = new Snake(startPos, endPos);
+	
     /*Snakes[SnakesNum] = pSnake;
 	SnakesNum++;*/
 
@@ -97,7 +99,7 @@ void AddSnakeAction::Execute()
 		pGrid->PrintErrorMessage("Error: Cell already has an object ! Click to continue ...");
 	}
 	
-
+	pGrid->SetOccuSnakecells(pSnake);
 }
 
 

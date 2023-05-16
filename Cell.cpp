@@ -28,6 +28,26 @@ CellPosition Cell::GetCellPosition() const
 	return position;
 }
 
+void Cell::SetOccuLadder(bool Isocc)
+{
+	OccupiedLadder = Isocc;
+}
+
+void Cell::SetOccuSnake(bool Isocc)
+{
+	OccupiedSnake = Isocc;
+}
+
+bool Cell::GetOccuLadder()
+{
+	return OccupiedLadder;
+}
+
+bool Cell::GetOccuSnake()
+{
+	return OccupiedSnake;
+}
+
 bool Cell::SetGameObject(GameObject * pGObj)
 {
 	if (pGameObject != NULL && pGObj != NULL) // already contains one

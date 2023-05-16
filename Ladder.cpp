@@ -49,16 +49,6 @@ CellPosition Ladder::GetEndPosition() const
 	return endCellPos;
 }
 
-int Ladder::GetLadderEndPositionInt() const
-{
-	return endCellPos.GetCellNumFromPosition(CellPosition());
-}
-
-int Ladder::GetLadderStartPositionInt() const
-{
-	return position.GetCellNumFromPosition(CellPosition());
-}
-
 void Ladder::Save(ofstream& OutFile, int type)
 {
 	if (OutFile.is_open())

@@ -1,9 +1,10 @@
+#pragma once
 #include "Grid.h"
-#include"Snake.h"
 #include "Cell.h"
 #include "GameObject.h"
-#include "Ladder.h"
 #include "Card.h"
+#include"Ladder.h"
+#include"Snake.h"
 #include "Player.h"
 #include"CellPosition.h"
 #include "Card_9.h"
@@ -176,6 +177,57 @@ void Grid::DeleteAll()
 			}
 		}
 	}
+}
+
+void Grid::SetOccuLaddercells(Ladder* ladder)
+{
+	int i = ladder->GetEndPosition().VCell();
+	for (i;i<ladder->GetPosition().VCell();i++)
+	{
+		CellList[i][ladder->GetEndPosition().HCell()]->SetOccuLadder(true);
+	}
+}
+
+void Grid::SetOccuSnakecells(Snake* snake)
+{
+	int i = snake->GetPosition().VCell();
+	for (i; i < snake->GetEndPosition().VCell(); i++)
+	{
+		CellList[i][snake->GetEndPosition().HCell()]->SetOccuLadder(true);
+	}
+}
+
+bool Grid::IsOcuppiedLadder(Ladder* ladder)
+{
+	int z = ladder->GetPosition().VCell();
+	int i = ladder->GetEndPosition().VCell();
+	while (i<=z)
+	{
+		bool x = CellList[i][ladder->GetEndPosition().HCell()]->GetOccuLadder();
+		if (x)
+		{
+			return true;
+		}
+		i++;
+	}
+	return false;
+	
+}
+
+bool Grid::IsOcuppiedSnake(Snake* snake)
+{
+	int z = snake->GetPosition().VCell();
+	int i = snake->GetEndPosition().VCell();
+	while (z<=i)
+	{
+		bool x = CellList[z][snake->GetEndPosition().HCell()]->GetOccuLadder();
+		if (x)
+		{
+			return true;
+		}
+		z++;
+	}
+	return false;
 }
 
 

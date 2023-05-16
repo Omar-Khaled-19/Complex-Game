@@ -35,15 +35,6 @@ CellPosition Snake::GetEndPosition() const
 }
 
 
-int Snake::GetSnakeEndPositionInt() const
-{
-    return endCellPos.GetCellNumFromPosition(CellPosition());
-}
-
-int Snake::GetSnakeStartPositionInt() const
-{
-    return position.GetCellNumFromPosition(CellPosition());
-}
 
 
 
