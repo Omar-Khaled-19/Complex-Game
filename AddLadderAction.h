@@ -9,12 +9,15 @@ class AddLadderAction : public Action
 	// [Action Parameters]
 	CellPosition startPos; // 1- The start position of the ladder
 	CellPosition endPos;   // 2- The end position of the ladder
-
+	Ladder* Ladders[99];
+	int LaddersNum = 0;
 	// Note: These parameters should be read in ReadActionParameters()
 
 public:
 
 	AddLadderAction(ApplicationManager *pApp); // A Constructor
+
+	bool CheckLadderOverLap(CellPosition start, CellPosition end);
 
 	virtual void ReadActionParameters(); // Reads AddLadderAction action parameters (startPos, endPos)
 

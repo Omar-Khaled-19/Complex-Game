@@ -13,6 +13,7 @@ AddLadderAction::~AddLadderAction()
 {
 }
 
+
 void AddLadderAction::ReadActionParameters() 
 {	
 	// Get a Pointer to the Input / Output Interfaces
@@ -48,9 +49,24 @@ bool AddLadderAction::isValid()
 	return true;
 }
 
+//bool AddLadderAction::CheckLadderOverLap(CellPosition start , CellPosition end)
+//{
+//	for (int i = 0; i < LaddersNum; i++)
+//	{
+//		if (start.HCell() == Ladders[i]->GetPosition().HCell())
+//		{
+//			if (start.VCell() < Ladders[i]->GetEndPosition().VCell() && end.VCell() > Ladders[i]->GetPosition().VCell() && start.VCell() == Ladders[i]->GetPosition().VCell() && end.VCell() == Ladders[i]->GetEndPosition().VCell())
+//			{
+//				return true;
+//			}
+//		}
+//	}
+//	return false;
+//
+//}
 
 // Execute the action
-void AddLadderAction::Execute() 
+void AddLadderAction::Execute()
 {
 
 	// The first line of any Action Execution is to read its parameter first 
@@ -58,6 +74,13 @@ void AddLadderAction::Execute()
 	ReadActionParameters();
 
 	Grid* pGrid = pManager->GetGrid();           // We get a pointer to the Grid from the ApplicationManager
+	
+	
+	
+
+	// Create a Ladder object with the parameters read from the user
+	Ladder * pLadder = new Ladder(startPos, endPos);
+	
 
 	if (!isValid())
 	{
@@ -65,10 +88,10 @@ void AddLadderAction::Execute()
 		return;
 	}
 
-	// Create a Ladder object with the parameters read from the user
-	Ladder * pLadder = new Ladder(startPos, endPos);
+	/*Ladders [LaddersNum] = pLadder;
+	LaddersNum++;*/
 
-
+	
 	// Add the card object to the GameObject of its Cell:
 	bool added = pGrid->AddObjectToCell(pLadder);
 

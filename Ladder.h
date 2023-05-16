@@ -20,6 +20,9 @@ public:
 	virtual void Apply(Grid* pGrid, Player* pPlayer); // Applys the effect of the ladder by moving player to ladder's end cell
 
 	CellPosition GetEndPosition() const; // A getter for the endCellPos data member
+
+	int GetLadderEndPositionInt() const;
+	int GetLadderStartPositionInt() const;
 	
 	virtual void Save(ofstream& OutFile, int type); 
 

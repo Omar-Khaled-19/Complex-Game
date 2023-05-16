@@ -22,6 +22,9 @@ public:
 	CellPosition GetEndPosition() const;
 	CellPosition Snake::GetStartPosition() const;
 
+	int GetSnakeEndPositionInt() const;
+	int GetSnakeStartPositionInt() const;
+
 	virtual void Save(ofstream& OutFile, int type);
 
 	virtual void Load(ifstream& Infile);

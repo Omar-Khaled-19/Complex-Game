@@ -57,6 +57,7 @@ int CellPosition::VCell() const
 	return vCell;
 }
 
+
 int CellPosition::HCell() const
 {
 	return hCell;
@@ -79,6 +80,7 @@ int CellPosition::GetCellNum() const
 	return GetCellNumFromPosition(*this); // (*this) is the calling object of GetCellNum
 	// which means the object of the current data members (vCell and hCell)
 }
+
 
 int CellPosition::GetCellNumFromPosition(const CellPosition& cellPosition)
 {
@@ -132,3 +134,6 @@ void CellPosition::AddCellNum(int addedNum)
 	// Note: this function updates the data members (vCell and hCell) of the calling object
 
 }
+
+
+

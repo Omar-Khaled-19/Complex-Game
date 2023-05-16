@@ -58,25 +58,26 @@ bool AddSnakeAction::isValid()
 	return true;
 }
 
-bool AddSnakeAction::overlaps( Snake& other)  
-{
-	CellPosition* start = & startPos;
-	CellPosition* end = &endPos;
-	CellPosition* endother = &other.GetPosition();
-	CellPosition* startother = &other.GetPosition();
-
-	return
-		start == startother || start == endother ||
-		end == startother || end == endother;
-
-}
+//bool AddSnakeAction::CheckSnakeOverLap(CellPosition start, CellPosition end)
+//{
+//	for (int i = 0; i < SnakesNum; i++)
+//	{
+//		if (end.VCell() < Snakes[i]->GetSnakeStartPositionInt() && start.VCell() > Snakes[i]->GetSnakeEndPositionInt() && end.VCell() == Snakes[i]->GetSnakeEndPositionInt() && start.VCell() == Snakes[i]->GetSnakeStartPositionInt())
+//		{
+//			return true;
+//		}
+//	}
+//	return false;
+//
+//}
 
 void AddSnakeAction::Execute()
 {
 	ReadActionParameters();
 
 	Grid* pGrid = pManager->GetGrid();           
-
+	CellPosition start;
+	CellPosition end;
 	if (!isValid())
 	{
 		pGrid->PrintErrorMessage("InValid Snake! Click to back to game ...");
@@ -85,6 +86,8 @@ void AddSnakeAction::Execute()
 	
 
 	Snake* pSnake = new Snake(startPos, endPos);
+    /*Snakes[SnakesNum] = pSnake;
+	SnakesNum++;*/
 
 	bool added = pGrid->AddObjectToCell(pSnake);
 
