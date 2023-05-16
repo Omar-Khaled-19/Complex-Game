@@ -65,6 +65,10 @@ public:
 
 	bool IsOcuppiedSnake(Snake* snake);
 
+	void ResetOccupiedLadderCells(Ladder* ladder);
+
+	void ResetOccupiedSnakeCells(Snake* snake);
+
 	// ========= Setters and Getters Functions =========
 
 	Input * GetInput() const;	// Gets a Pointer to the Input

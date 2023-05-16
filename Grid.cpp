@@ -68,6 +68,17 @@ void Grid::RemoveObjectFromCell(const CellPosition & pos)
 {
 	if (pos.IsValidCell()) // Check if valid position
 	{
+		if (CellList[pos.VCell()][pos.HCell()]->HasLadder()!=NULL)
+		{
+			ResetOccupiedLadderCells(CellList[pos.VCell()][pos.HCell()]->HasLadder());
+		}
+		else
+		{
+			if (CellList[pos.VCell()][pos.HCell()]->HasSnake() != NULL)
+			{
+				ResetOccupiedSnakeCells(CellList[pos.VCell()][pos.HCell()]->HasSnake());
+			}
+		}
 		// Note: you can deallocate the object here before setting the pointer to null if it is needed
 		delete CellList[pos.VCell()][pos.HCell()]->GetGameObject(); // added by shereef
 		CellList[pos.VCell()][pos.HCell()]->SetGameObject(NULL);
@@ -228,6 +239,24 @@ bool Grid::IsOcuppiedSnake(Snake* snake)
 		z++;
 	}
 	return false;
+}
+
+void Grid::ResetOccupiedLadderCells(Ladder* ladder)
+{
+	int i = ladder->GetEndPosition().VCell();
+	for (i; i < ladder->GetPosition().VCell(); i++)
+	{
+		CellList[i][ladder->GetEndPosition().HCell()]->SetOccuLadder(false);
+	}
+}
+
+void Grid::ResetOccupiedSnakeCells(Snake* snake)
+{
+	int i = snake->GetPosition().VCell();
+	for (i; i < snake->GetEndPosition().VCell(); i++)
+	{
+		CellList[i][snake->GetEndPosition().HCell()]->SetOccuLadder(false);
+	}
 }
 
 
